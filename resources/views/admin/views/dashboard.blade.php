@@ -6,27 +6,34 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <br><br>
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Tableau de bord</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          
-        <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Véhicules actifs</p>
+                <p>Véhicules</p>
               </div>
-              <a href="{{ route('listevehicules') }}" class="small-box-footer">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('listevehicules') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          
-          
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -34,27 +41,38 @@
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Réservations</p>
+                <p>Clients</p>
               </div>
-              <a href="#" class="small-box-footer">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('listeclients') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          
-          
-          <!-- ./col -->  
-        <div class="col-lg-3 col-6">
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Clients</p>
+                <p>Réservations</p>
               </div>
-              <a href="{{ route('listeclients') }}" class="small-box-footer">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-         
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>0</h3>
+
+                <p>Véhicules sous location</p>
+              </div>
+              <a href="{{ route('listevehicules') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
+        <!-- /.row -->
         
       </div><!-- /.container-fluid -->
     </section>

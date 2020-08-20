@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblVehicules extends Migration
+class CreateVehicules extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTblVehicules extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_vehicules', function (Blueprint $table) {
+        Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
             $table->integer("vehicule_categorie_id")->nullable();
             $table->string("matricule",255)->unique();
@@ -43,6 +43,6 @@ class CreateTblVehicules extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_vehicules');
+        Schema::dropIfExists('vehicules');
     }
 }
