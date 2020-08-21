@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Platinuim - Agence de Location</title>
   <link href="assets/css/vehicule.css" rel="stylesheet">
+  <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
   </head>
 <body>
@@ -65,7 +66,7 @@
                 <tbody>
                     <tr data-status="L">
                         <td>1</td>
-                        <td><img alt="Vue logo" src="../assets/audia3.jpg"> </td>
+                        <td><img alt="Vue logo" src="assets/audia3.jpg"> </td>
                         <td>Audi A3</td>
                         <td><span class="label label-success">L</span></td>
                         <td>215 Tu 1254</td>
@@ -76,7 +77,7 @@
                     </tr>
                     <tr data-status="O">
                         <td>2</td>
-                        <td><img alt="Vue logo" src="../assets/bmwserie8.jpg"></td>
+                        <td><img alt="Vue logo" src="assets/bmwserie8.jpg"></td>
                         <td>Bmw Serie 8</td>
                         <td><span class="label label-danger">O</span></td>
                         <td>170 Tu 127</td>
@@ -87,7 +88,7 @@
                     </tr>
                     <tr data-status="L">
                         <td>3</td>
-                        <td><img alt="Vue logo" src="../assets/chevrolet-sonic.jpg"></td>
+                        <td><img alt="Vue logo" src="assets/chevrolet-sonic.jpg"></td>
                         <td>Chevrolet Sonic</td>
                         <td><span class="label label-success">L</span></td>
                         <td>205 Tu 4580</td>
@@ -98,7 +99,7 @@
                     </tr>
                     <tr data-status="O">
                         <td>4</td>
-                        <td><img alt="Vue logo" src="../assets/chevrolet-spark.jpg"></td>
+                        <td><img alt="Vue logo" src="assets/chevrolet-spark.jpg"></td>
                         <td>Chevrolet Spark</td>
                         <td><span class="label label-danger">O</span></td>
                         <td>198 Tu 1002</td>
@@ -109,7 +110,7 @@
                     </tr>
                     <tr data-status="L">
                         <td>5</td>
-                        <td><img alt="Vue logo" src="../assets/golf8.jpg"></td>
+                        <td><img alt="Vue logo" src="assets/golf8.jpg"></td>
                         <td>Volkswagen Golf 8</td>
                         <td><span class="label label-success">L</span></td>
                         <td>216 Tu 5663</td>
@@ -120,7 +121,7 @@
                     </tr>
                     <tr data-status="L">
                         <td>6</td>
-                        <td><img alt="Vue logo" src="../assets/mercedesclassa.png"></td>
+                        <td><img alt="Vue logo" src="assets/mercedesclassa.png"></td>
                         <td>Mercedess Class A</td>
                         <td><span class="label label-success">L</span></td>
                         <td>155 Tu 5687</td>
