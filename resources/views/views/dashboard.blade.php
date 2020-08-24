@@ -1,4 +1,4 @@
-@extends("admin.layouts.layout")
+@extends("layouts.layout")
 
 @section("title","Platinuim")
 
@@ -31,7 +31,7 @@
 
                 <p>Véhicules</p>
               </div>
-              <a href="{{ route('listevehicules') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('vehicules') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -43,7 +43,7 @@
 
                 <p>Clients</p>
               </div>
-              <a href="{{ route('listeclients') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('clients') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -67,7 +67,7 @@
 
                 <p>Véhicules sous location</p>
               </div>
-              <a href="{{ route('listevehicules') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('vehicules') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

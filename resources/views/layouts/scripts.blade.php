@@ -38,3 +38,81 @@
 <script src="{!! asset('assets/js/jquery.validate.min.js') !!}"></script>
 <script src="{!! asset('assets/js/sweetalert.js') !!}"></script>
 <script src="{!! asset('assets/js/custom-script.js') !!}"></script>
+
+
+
+<script>
+         $(function() {
+           if($('#categories').length > 0){
+            $('#categories').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: "{{ route('listecategories') }}",
+               columns: [
+                        { data: 'categorie', name: 'categorie' },
+                        { data: 'action_btns', name: 'action_btns' },
+                     ]
+            });
+
+           }
+
+           if($('#vehicules').length > 0){
+            $('#vehicules').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: "{{ route('listevehicules') }}",
+               columns: [
+                        { data: 'photo', name: 'photo' },
+                        { data: 'categorie', name: 'categorie' },
+                        { data: 'vehicule', name: 'vehicule' },
+                        { data: 'matricule', name: 'matricule' },
+                        { data: 'status', name: 'status' },
+                        { data: 'action_btns', name: 'action_btns' },
+                     ]
+            });
+
+           }
+
+
+           if($('#clients').length > 0){
+            $('#clients').DataTable({
+               processing: true,
+               serverSide: true,
+               ajax: "{{ route('listeclients') }}",
+               columns: [
+                        { data: 'nom', name: 'nom' },
+                        { data: 'cin', name: 'cin' },
+                        { data: 'email', name: 'email' },
+                        { data: 'status', name: 'status' },
+                        { data: 'action_btns', name: 'action_btns' },
+                     ]
+            });
+
+           }
+               
+         });
+         </script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+<script>
+   var vue = new Vue({
+  el: '#app',
+  data: {
+    formOpen: false,
+    productData: {
+      is_featured: false
+    }
+  },
+  methods: {
+    resetForm: function () {
+      this.productData = {
+        is_featured: false
+      }
+    },
+    cancel: function() {
+      this.formOpen = false;
+      this.resetForm();
+    }
+  }
+})
+</script>

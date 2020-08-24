@@ -15,12 +15,12 @@ class CreateVehicules extends Migration
     {
         Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
-            $table->integer("vehicule_categorie_id")->nullable();
+            $table->integer("categorie_id")->nullable();
             $table->string("matricule",255)->unique();
             $table->string("vehicule",255)->nullable();
             $table->string("carburant",255)->nullable();
             $table->integer("nb_cyl")->nullable();
-            $table->string("puissance_fiscale",255)->nullable();
+            $table->integer("puissance_fiscale")->nullable();
             $table->integer("nb_vit")->nullable();
             $table->string("couleur",255)->nullable();
             $table->text("options")->nullable();

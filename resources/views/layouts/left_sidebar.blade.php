@@ -31,14 +31,14 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('listevehicules') }}" class="nav-link">
+            <a href="{{ route('vehicules') }}" class="nav-link">
             <i class="nav-icon fas fa-car"></i>
               <p class="text">Véhicules</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('listeclients') }}" class="nav-link">
+            <a href="{{ route('clients') }}" class="nav-link">
             <i class="nav-icon fas fa-id-card"></i>
               <p class="text">Clients</p>
             </a>

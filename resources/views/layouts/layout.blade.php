@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield("title")</title>
   <link href="{{asset('css/client.css')}}" rel="stylesheet">
-@include("admin.layouts.styles")
+@include("layouts.styles")
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -13,17 +13,17 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-@include("admin.layouts.header")
+@include("layouts.header")
 
-@include("admin.layouts.left_sidebar")
+@include("layouts.left_sidebar")
 
   @section("content")
   @show
 
-  @include("admin.layouts.footer")
+  @include("layouts.footer")
 </div>
 <!-- ./wrapper -->
 
-@include("admin.layouts.scripts")
+@include("layouts.scripts")
 </body>
 </html>
