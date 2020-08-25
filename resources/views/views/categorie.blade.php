@@ -32,15 +32,18 @@
   <div class="add-product" :class="{'open': formOpen}">
   
   @if(session()->has("message"))
-  <div class="alert alert-success">
+  <div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
     <p>{{ session('message') }}</p>
   </div>
   @endif
   @if(count($errors) > 0)
-    <div class="alert alert-danger"></div>
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
     @foreach($errors->all() as $error)
     <p>{{ $error }}</p>
     @endforeach
+    </div>
     @endif
     <div class="button-copy" v-show="!formOpen" @click="formOpen = true"><a href="#myModal" class="trigger-btn" data-toggle="modal"><button type="button" class="btn btn-success add-new"><i class="fa fa-plus"></i> Ajouter</button></a> </div>
     <form role="form" id='frm-add-categorie' method='post' action="{{ route('savecategorie') }}">
@@ -59,16 +62,16 @@
 <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="box box-primary">
-                    <div class="box-header with-border">
+                <div class="box-header with-border">
                     </div>
-    <table class="table table-bordered" id="categories">
-               <thead>
-                  <tr>
-                     <th>Categorie</th>
-                     <th>Action</th>
-                  </tr>
-               </thead>
-            </table>
+  <table class="table table-bordered" id="categories">
+  <thead>
+      <tr>
+        <th>Categorie</th>
+        <th>Action</th>
+      </tr>
+  </thead> 
+  </table>
             </div>
                 <!-- /.box -->
 
