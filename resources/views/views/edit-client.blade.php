@@ -27,17 +27,21 @@
           <div class="card-header">
             <h3 class="card-title">Modifier client</h3>
           </div>
+          
           @if(session()->has("message"))
-<div class="alert alert-success">
-<p>{{ session('message') }}</p>
-</div>
-@endif
-@if(count($errors) > 0)
-<div class="alert alert-danger"></div>
-@foreach($errors->all() as $error)
-<p>{{ $error }}</p>
-@endforeach
-@endif
+  <div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <p>{{ session('message') }}</p>
+  </div>
+  @endif
+  @if(count($errors) > 0)
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    @foreach($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+    </div>
+    @endif
           <form role="form" id='frm-add-client' method='post' action="{{ route('editsaveclient') }}">
           {!! csrf_field() !!}
           <input type="hidden" value="{{ $client->id }}" name="client_id" />
