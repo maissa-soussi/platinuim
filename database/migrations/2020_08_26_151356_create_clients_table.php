@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClients extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateClients extends Migration
             $table->integer("cin")->unique();
             $table->string("email",255)->unique();
             $table->string("phone_nb")->nullable();
-            $table->text("adresse")->nullable();
+            $table->string("adresse")->nullable();
             $table->string("date_nais",255)->nullable();
             $table->integer("status")->default(1);
             $table->timestamps();

@@ -2,110 +2,137 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
+use App\Client;
 use Illuminate\Http\Request;
-use Datatables;
-use Validator;
-use URL;
 
 class ClientController extends Controller
 {
-    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $clients = Client::all();
 
-    public function Clients(){
-        return view("views.client");
+        return view('clients.index', compact('clients'));
     }
 
-    public function ListeClients(){
-
-        $clients = Client::query();
-        return Datatables::of($clients)
-        ->editColumn("action_btns",function($clients){
-            return '<a href="'.URL::to('/edit-client/'.$clients->id).'" class="btn btn-info client-edit" data-id="'.$clients->id.'">Modifier</a> 
-            <a href="javascript:void(0)" class="btn btn-danger client-delete" data-id="'.$clients->id.'">Supprimer</a>';
-        })
-
-        ->editColumn("status",function($clients){
-            if($clients->status){
-                return '<button class="btn btn-success">F</button>';
-
-            }else{
-                return '<button class="btn btn-dark">N</button>';
-
-            }
-        })
-        ->rawColumns(["action_btns","status"])
-        ->make(true);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('clients.create');
     }
 
-    public function saveClient(Request $request){
-        $validator = Validator::make(array(
-            "client_name"=>$request->client_name,
-            "date_nais"=>$request->date_nais,
-            "tel"=>$request->tel,
-            "cin"=>$request->cin,
-            "num_permis"=>$request->permis,
-            "email"=>$request->email,
-            "adress"=>$request->adress,
-        ),array(
-            "client_name"=>"required",
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            "nom"=>"required",
             "date_nais"=>"required",
-            "tel"=>"required",
+            "phone_nb"=>"required",
             "cin"=>"required|unique:clients",
             "num_permis"=>"required|unique:clients",
             "email"=>"required|unique:clients",
-            "adress"=>"required",
-        ));
+            "adresse"=>"required",
+        ]);
 
-        if($validator->fails()){
-            return redirect("client")->withErrors($validator)->withInput();
+        $client = new Client([
+            'nom' => $request->get('nom'),
+            'date_nais' => $request->get('date_nais'),
+            'phone_nb' => $request->get('phone_nb'),
+            'cin' => $request->get('cin'),
+            'num_permis' => $request->get('num_permis'),
+            'email' => $request->get('email'),
+            'adresse' => $request->get('adresse'),
+        ]);
 
-        }else{
-            $client = new client;
-            $client->nom = $request->client_name;
-            $client->date_nais = $request->date_nais;
-            $client->phone_nb = $request->tel;
-            $client->cin = $request->cin;
-            $client->num_permis = $request->permis;
-            $client->email = $request->email;
-            $client->adresse = $request->adress;
-            $client->save();
-            $request->session()->flash("message","ajout d'un nouveau client");
-            return redirect("client");
-             
-        }
+        $client->save();
+
+        return redirect('/clients')->with('success', 'Ajout avec succes!');
     }
 
-    public function deleteClient(Request $request){
-        $id = $request->delete_id;
-        $client_data = Client::find($id);
-        if(isset($client_data->id)){
-            $client_data->delete();
-            echo json_encode(array("message"=>"client supprimée"));
-        }else{
-            echo json_encode(array("message"=>"client n'existe pas"));
-        }
-        die();
-    }
-
-    public function editClient($id = null){
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
         $client = Client::find($id);
-        return view("views.edit-client",["client"=>$client]);
+
+        return view('clients.show', compact('client'));
     }
 
-    public function editsaveClient(Request $request){
-        $client_id = $request->client_id;
-        $client = Client::find($client_id);
-        $client->nom = $request->client_name;
-        $client->date_nais = $request->date_nais;
-        $client->phone_nb = $request->tel;
-        $client->cin = $request->cin;
-        $client->num_permis = $request->permis;
-        $client->email = $request->email;
-        $client->status = $request->c_status;
-        $client->adresse = $request->adress;
-            $client->save();
-            $request->session()->flash("message","modification");
-            return redirect("client");
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $client = Client::find($id);
+
+        return view('clients.edit', compact('client'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            "nom"=>"required",
+            "date_nais"=>"required",
+            "phone_nb"=>"required",
+            "cin"=>"required",
+            "num_permis"=>"required",
+            "email"=>"required",
+            "adresse"=>"required",
+            "status"=>"required",
+        ]);
+
+        $client = Client::find($id);
+        $client->nom = $request->get('nom');
+        $client->date_nais = $request->get('date_nais');
+        $client->phone_nb = $request->get('phone_nb');
+        $client->cin = $request->get('cin');
+        $client->num_permis = $request->get('num_permis');
+        $client->email = $request->get('email');
+        $client->adresse = $request->get('adresse');
+        $client->status = $request->get('status');
+        $client->save();
+
+        return redirect('/clients')->with('success', 'Modification avec succes!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $client = Client::find($id);
+        $client->delete();
+
+        return redirect('/clients')->with('success', 'Client supprimé!');
     }
 }

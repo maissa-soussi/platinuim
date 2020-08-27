@@ -41,7 +41,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="{{ route('categories') }}" role="button">
+        <a class="nav-link"  href="{{ route('categories.index') }}" role="button">
           <i class="fas fa-cog"></i> Paramètres
         </a>
       </li>

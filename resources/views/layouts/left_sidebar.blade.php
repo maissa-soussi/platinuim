@@ -22,7 +22,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">    
         <li class="nav-item">    
-        <a href="{{ route('dashboard') }}" class="nav-link">
+        <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Tableau de bord
@@ -31,14 +31,14 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('vehicules') }}" class="nav-link">
+            <a href="{{ route('vehicules.index') }}" class="nav-link">
             <i class="nav-icon fas fa-car"></i>
               <p class="text">Véhicules</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('clients') }}" class="nav-link">
+            <a href="{{ route('clients.index') }}" class="nav-link">
             <i class="nav-icon fas fa-id-card"></i>
               <p class="text">Clients</p>
             </a>
