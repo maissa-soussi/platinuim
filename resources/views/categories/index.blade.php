@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Paramètres</h1>
+            <h1 class="m-0 text-dark">Catégories</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -28,12 +28,6 @@
 @endif
 
 <table class="table table-striped mt-3">
- <thead>
-   <tr>
-     <th scope="col">Catégorie</th>
-     <th></th>
-   </tr>
- </thead>
  <tbody>
   @foreach($categories as $categorie)
    <tr>

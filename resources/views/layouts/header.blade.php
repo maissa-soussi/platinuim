@@ -40,11 +40,23 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"  href="{{ route('categories.index') }}" role="button">
-          <i class="fas fa-cog"></i> Paramètres
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="fas fa-cog"></i> Paramètres <sub><i class="fas fa-angle-down"></i></sub>          
         </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('categories.index') }}" class="dropdown-item">
+          <i class="fas fa-clipboard-list mr-2"></i></i> Catégories
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+          <i class="fas fa-user-cog mr-2"></i> Admin
+          </a>
+          
       </li>
+      
       <li class="nav-item">
         <a class="nav-link"  href="#" role="button">
           <i class="fas fa-th-large"></i> Mon compte
