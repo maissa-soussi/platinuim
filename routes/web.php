@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 // login route 
 Route::post('/login',"LoginController@login");
-
+// register routes 
+Route::resource('users', 'UsersController');
+Route::post('/register', 'UsersController@store');
 // routes
 Route::get("/dashboard", "AdminHomeController@dashboard")->name('dashboard') ;
 Route::resource('categories', 'CategorieController');

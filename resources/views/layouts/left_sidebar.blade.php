@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 bg-navy">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/logo.jpg" alt="Logo" width="230" height="120" >
