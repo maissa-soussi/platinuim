@@ -2,7 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-navy">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="dist/img/logo.jpg" alt="Logo" width="230" height="120" >
+      <img src="dist/img/logo.jpg" alt="Logo" width="90" height="90" style="-moz-border-radius : 75px;
+  -webkit-border-radius : 75px;
+  border-radius : 75px; margin-left:30%;" >
       
     </a>
 
