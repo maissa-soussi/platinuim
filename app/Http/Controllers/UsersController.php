@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-
+        
         return view('register', compact('users'));
     }
 
@@ -28,11 +28,11 @@ class UsersController extends Controller
             'password' => 'required'
         ]);
         
-        $user = User::create(request(['name', 'email', 'password']));
+        $user = User::create(request(['name', 'email', 'password','role']));
         
         auth()->login($user);
         
-        return redirect()->to('/games');
+        return redirect()->to('users');
     }
 
     
