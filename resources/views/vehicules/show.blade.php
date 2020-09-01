@@ -25,7 +25,7 @@
        <h3>Véhicule</h3>
        <p>{{ $vehicule->vehicule }}</p>
        <h3>Catégorie</h3>
-       <p>{{ $vehicule->categorie_id }}</p>
+       <p>{{ $vehicule->categorie['categorie'] }}</p>
        <h3>Matricule</h3>
        <p>{{ $vehicule->matricule }}</p>
        <h3>Carburant</h3>

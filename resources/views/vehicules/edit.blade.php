@@ -32,7 +32,7 @@
       </div>
     @endif
 
-    <form method="POST" action="{{ route('vehicules.update', $vehicule) }}">
+    <form method="POST" action="{{ route('vehicules.update', $vehicule->id) }}" enctype="multipart/form-data">
      @csrf
      @method('PATCH') 
         <div class="form-group">
@@ -43,7 +43,10 @@
 
         <div class="form-group">
                                 <label for="photo">Photo</label>
-                                <input type="file" value="{{ $vehicule->photo }}" class="form-control" id="photo" name='photo'>
+                                <input type="file" id="photo" name='photo' />
+                                <br>
+                            <img src="{{ url('upload/'.$vehicule->photo) }}" class="img-thumbnail" width="100" height="100" />
+                            <input type="hidden" name="hidden-image" value="{{ $vehicule->photo }}" />
                             </div>
 
         <div class="form-group">
@@ -62,9 +65,10 @@
         <div class="form-group">
         <label for="categorie_id">Categorie</label>
                         <select class="form-control" name="categorie_id" id="categorie_id">
-                        <option value="-1">Select Categorie</option>
-                        <option value="0">A</option>
-                        <option value="1">B</option>
+                        <?php $selectedvalue = $vehicule->categorie_id ?>
+                        @foreach ($cat as $key => $value)
+                        <option value="{{ $value->id }}" {{ $selectedvalue == $value->id ? 'selected="selected"' : '' }}>{{ $value->categorie }}</option>
+                        @endforeach
                         </select> 
         </div>
 

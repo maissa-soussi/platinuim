@@ -32,7 +32,7 @@
       </div>
     @endif
 
-    <form method="POST" action="{{ route('vehicules.store') }}">
+    <form method="POST" action="{{ route('vehicules.store') }}" enctype="multipart/form-data">
      @csrf
         <div class="form-group">
             <label for="vehicule">Vehicule</label>
@@ -54,15 +54,16 @@
 
         <div class="form-group">
         <label for="photo">Photo</label>
-        <input type="file" value="{{ old('photo') }}" class="form-control" id="photo" name='photo'>
+        <input type="file" id="photo" name='photo' />
         </div>
 
         <div class="form-group">
         <label for="categorie_id">Categorie</label>
                         <select class="form-control" name="categorie_id" id="categorie_id">
-                        <option value="-1">Select Categorie</option>
-                        <option value="0">A</option>
-                        <option value="1">B</option>
+                        <option value="-1">Select categorie</option>
+                        @foreach ($cat as $key => $value)
+                        <option value="{{ $value->id }}">{{ $value->categorie }}</option>
+                        @endforeach
                         </select> 
         </div>
 

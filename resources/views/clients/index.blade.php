@@ -16,11 +16,22 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    
     <!-- Main content -->
     <section class="content">
      
     <a href="{{ route('clients.create') }}" class="btn btn-success">Ajouter</a>
+    <br><br>
+<div class="col-md-4 col-md-offset-2">
+<form action="/searchclient" method="get">
+<div class="input-group">
+<input type="search" name="searchclient" class="form-control">
+<span class="input-group-prepend">
+<button type="submit" class="btn btn-primary">Rechercher</button>
+</span>
+</div>
+</form>
+</div>
 
 @if(session()->get('success'))
    <div class="alert alert-success mt-3">

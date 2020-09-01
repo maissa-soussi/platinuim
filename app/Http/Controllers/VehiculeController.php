@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Vehicule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Categorie;
 
 class VehiculeController extends Controller
 {
@@ -26,7 +28,16 @@ class VehiculeController extends Controller
      */
     public function create()
     {
-        return view('vehicules.create');
+        $cat= Categorie::all();
+        $vehicule= Vehicule::all();
+        return view('vehicules.create', ['vehicule' => $vehicule, 'cat' => $cat ]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $vehicules = Vehicule::where('vehicule', 'LIKE', '%'.$search.'%')->orderBy('vehicule')->paginate(10);
+        return view('vehicules.index', compact('vehicules'));
     }
 
     /**
@@ -47,7 +58,7 @@ class VehiculeController extends Controller
             "puissance_fiscale"=>"required|not_in:-1",
             "nb_vit"=>"required|not_in:-1",
             "options"=>"required",
-            "photo"=>"required",
+            "photo"=>"required|image|max:10240",
         ]);
 
         $vehicule = new Vehicule([
@@ -60,8 +71,15 @@ class VehiculeController extends Controller
             'puissance_fiscale' => $request->get('puissance_fiscale'),
             'nb_vit' => $request->get('nb_vit'),
             'options' => $request->get('options'),
-            'photo' => $request->get('photo'),
         ]);
+
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $fileName = Str::random(30).'.'.$image->guessClientExtension();
+            $image->move('upload/', $fileName);
+
+            $vehicule->photo = $fileName;
+        }
 
         $vehicule->save();
 
@@ -90,8 +108,8 @@ class VehiculeController extends Controller
     public function edit($id)
     {
         $vehicule = Vehicule::find($id);
-
-        return view('vehicules.edit', compact('vehicule'));
+        $cat = Categorie::all();
+        return view('vehicules.edit', ['vehicule' => $vehicule, 'cat' => $cat]);
     }
 
     /**
@@ -103,35 +121,56 @@ class VehiculeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            "vehicule"=>"required",
-            "couleur"=>"required",
-            "matricule"=>"required",
-            "categorie_id"=>"required|not_in:-1",
-            "carburant"=>"required|not_in:-1",
-            "nb_cyl"=>"required|not_in:-1",
-            "puissance_fiscale"=>"required|not_in:-1",
-            "nb_vit"=>"required|not_in:-1",
-            "options"=>"required",
-            "status"=>"required",
-            "photo"=>"required",
-            
-        ]);
+        $image_name = $request->hidden_image;
+        $image = $request->file('photo');
+        if($image != ''){
+            $request->validate([
+                "vehicule"=>"required",
+                "couleur"=>"required",
+                "matricule"=>"required",
+                "categorie_id"=>"required|not_in:-1",
+                "carburant"=>"required|not_in:-1",
+                "nb_cyl"=>"required|not_in:-1",
+                "puissance_fiscale"=>"required|not_in:-1",
+                "nb_vit"=>"required|not_in:-1",
+                "options"=>"required",
+                "status"=>"required",
+                "photo"=>"image|max:10240",
+                
+            ]);
+            $image_name = rand().'.'.$image->guessClientExtension();
+            $image->move(public_path('upload/'), $image_name);
 
-        $vehicule = Vehicule::find($id);
-        $vehicule->vehicule = $request->get('vehicule');
-        $vehicule->couleur = $request->get('couleur');
-        $vehicule->matricule = $request->get('matricule');
-        $vehicule->categorie_id = $request->get('categorie_id');
-        $vehicule->carburant = $request->get('carburant');
-        $vehicule->nb_cyl = $request->get('nb_cyl');
-        $vehicule->puissance_fiscale = $request->get('puissance_fiscale');
-        $vehicule->nb_vit = $request->get('nb_vit');
-        $vehicule->options = $request->get('options');
-        $vehicule->status = $request->get('status');
-        $vehicule->photo = $request->get('photo');
-        $vehicule->save();
+        }else{
+            $request->validate([
+                "vehicule"=>"required",
+                "couleur"=>"required",
+                "matricule"=>"required",
+                "categorie_id"=>"required|not_in:-1",
+                "carburant"=>"required|not_in:-1",
+                "nb_cyl"=>"required|not_in:-1",
+                "puissance_fiscale"=>"required|not_in:-1",
+                "nb_vit"=>"required|not_in:-1",
+                "options"=>"required",
+                "status"=>"required",               
+            ]);
 
+        }
+        $form_data = array(
+        'vehicule' => $request->vehicule,
+        'couleur' => $request->couleur,
+        'matricule' => $request->matricule,
+        'categorie_id' => $request->categorie_id,
+        'carburant' => $request->carburant,
+        'nb_cyl' => $request->nb_cyl,
+        'puissance_fiscale' => $request->puissance_fiscale,
+        'nb_vit' => $request->nb_vit,
+        'options' => $request->options,
+        'status' => $request->status,
+        'photo' => $image_name,
+        );
+
+        Vehicule::whereId($id)->update($form_data);
         return redirect('/vehicules')->with('success', 'Modification avec succes!');
     }
 

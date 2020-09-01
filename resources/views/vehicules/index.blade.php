@@ -21,6 +21,18 @@
     <section class="content">
      
     <a href="{{ route('vehicules.create') }}" class="btn btn-success">Ajouter</a>
+    <br><br>
+    
+<div class="col-md-4 col-md-offset-2">
+<form action="/search" method="get">
+<div class="input-group">
+<input type="search" name="search" class="form-control">
+<span class="input-group-prepend">
+<button type="submit" class="btn btn-primary">Rechercher</button>
+</span>
+</div>
+</form>
+</div>
 
 @if(session()->get('success'))
    <div class="alert alert-success mt-3">
@@ -33,6 +45,7 @@
    <tr>
      <th scope="col">Véhicule</th>
      <th scope="col">Photo</th>
+     <th scope="col">Categorie</th>
      <th scope="col">Matricule</th>
      <th scope="col">Status</th>
      <th></th>
@@ -42,7 +55,8 @@
   @foreach($vehicules as $vehicule)
    <tr>
      <td>{{ $vehicule->vehicule }}</td>
-     <td><img src="{{ $vehicule->photo }}" width="100" height="100"></td>
+     <td><img src="{{ url('upload/'.$vehicule->photo) }}" width="100" height="100"></td>
+     <td>{{ $vehicule->categorie['categorie'] }}</td>
      <td>{{ $vehicule->matricule }}</td>
      <td>@if($vehicule->status)
      <button class="btn btn-success">Disponible</button>
