@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
+// login route 
+Route::post('/login',"LoginController@login");
 
-//Route::view('/client', 'client');
-
-Route::get("/", "AdminHomeController@dashboard")->name('dashboard') ;
+// routes
+Route::get("/dashboard", "AdminHomeController@dashboard")->name('dashboard') ;
 Route::resource('categories', 'CategorieController');
 Route::resource('vehicules', 'VehiculeController');
 Route::resource('clients', 'ClientController');
