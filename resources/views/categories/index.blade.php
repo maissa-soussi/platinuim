@@ -38,14 +38,15 @@
     @endif
     
     @foreach($categories as $categorie)
-    <span class="badge badge-pill" style="font-size:20px; width:150px; margin-bottom:15px; color:#16213e; background-color:silver;"> {{ $categorie->categorie }} 
+    <span class="badge badge-pill" style="font-size:20px; width:150px; margin-bottom:15px; color:#16213e; background-color:silver;"> 
        <form method="POST" action="{{ route('categories.destroy', $categorie) }}">
         @csrf
         @method('DELETE')
-           <button type="submit">
-             <i class="fa fa-times" aria-hidden="true"></i>
+        <button type="submit" class="close" aria-label="close">
+        &times;
            </button>
        </form>
+       {{ $categorie->categorie }}
     </span>
     @endforeach 
 

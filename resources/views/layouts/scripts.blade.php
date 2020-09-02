@@ -40,7 +40,12 @@
 <script src="{!! asset('assets/js/custom-script.js') !!}"></script>
 <script>
 $(document).ready( function () {
-    $('#datatable').DataTable();
+    $('#clienttable').DataTable();
+} );
+</script>
+<script>
+$(document).ready( function () {
+    $('#vehiculetable').DataTable();
 } );
 </script>
 

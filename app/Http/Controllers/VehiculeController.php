@@ -31,12 +31,7 @@ class VehiculeController extends Controller
         //
     }
 
-    public function search(Request $request)
-    {
-        $search = $request->get('search');
-        $vehicules = Vehicule::where('vehicule', 'LIKE', '%'.$search.'%')->orderBy('vehicule')->paginate(10);
-        return view('vehicules.index', compact('vehicules'));
-    }
+    
 
     /**
      * Store a newly created resource in storage.

@@ -37,7 +37,7 @@
       </div>
     @endif
 
-<table id="datatable" class="table table-striped mt-3">
+<table id="clienttable" class="table table-striped mt-3">
  <thead>
    <tr>
      <th scope="col">Nom</th>

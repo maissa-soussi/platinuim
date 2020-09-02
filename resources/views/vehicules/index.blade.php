@@ -23,17 +23,8 @@
     <button type="button" href="#" class="btn btn-success" style="float:right; margin-right:5%;" data-toggle="modal" data-target="#myModal">Ajouter</button>
     
     
-    <div class="col-md-4 col-md-offset-2" style="margin-left:7%;">
-        <form action="/search" method="get">
-            <div class="input-group">
-            <input type="search" name="search" class="form-control">
-            <span class="input-group-prepend">
-                 <button type="submit" class="btn btn-primary">Rechercher</button>
-            </span>
-            </div>
-        </form>
-    </div>
-       <br/> 
+    
+       <br> <br> <br>
 @if(session()->get('success'))
    <div class="alert alert-success mt-3">
      {{ session()->get('success') }}  
@@ -50,7 +41,7 @@
       </div>
     @endif
 
-<table class="table table-striped mt-3">
+<table id="vehiculetable" class="table table-striped mt-3">
  <thead>
    <tr>
      <th scope="col">Véhicule</th>
