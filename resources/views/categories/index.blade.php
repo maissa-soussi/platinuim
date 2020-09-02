@@ -20,7 +20,7 @@
     <!-- Main content -->
     <section class="content">
     <button type="button" href="#" class="btn btn-success" style="float:right; margin-right:5%;" data-toggle="modal" data-target="#myModal">Ajouter</button>
-     <br><br>
+     <br><br> <br>
 @if(session()->get('success'))
    <div class="alert alert-success mt-3">
      {{ session()->get('success') }}  
@@ -36,7 +36,20 @@
         </ul>
       </div>
     @endif
+    
+    @foreach($categories as $categorie)
+    <span class="badge badge-pill" style="font-size:20px; width:150px; margin-bottom:15px; color:#16213e; background-color:silver;"> {{ $categorie->categorie }} 
+       <form method="POST" action="{{ route('categories.destroy', $categorie) }}">
+        @csrf
+        @method('DELETE')
+           <button type="submit">
+             <i class="fa fa-times" aria-hidden="true"></i>
+           </button>
+       </form>
+    </span>
+    @endforeach 
 
+<!--
 <table class="table table-striped mt-3">
  <tbody>
   @foreach($categories as $categorie)
@@ -61,7 +74,7 @@
  @endforeach
  </tbody>
 </table>
-
+-->
 <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
