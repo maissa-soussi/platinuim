@@ -11,7 +11,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{!! asset('plugins/daterangepicker/daterangepicker.css') !!}">
 
-  <link rel="stylesheet" href="{!! asset('assets/css/jquery.dataTables.min.css') !!}">
+  <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css') }}">
   <link rel="stylesheet" href="{!! asset('assets/css/sweetalert.css') !!}">
   
   <link href="{!! asset('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900') !!}" rel="stylesheet">

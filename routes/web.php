@@ -27,4 +27,4 @@ Route::resource('categories', 'CategorieController');
 Route::resource('vehicules', 'VehiculeController');
 Route::resource('clients', 'ClientController');
 Route::get('/search','VehiculeController@search');
-Route::get('/searchclient','ClientController@searchclient');
+

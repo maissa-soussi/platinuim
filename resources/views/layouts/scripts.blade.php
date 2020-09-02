@@ -34,10 +34,15 @@
 <script src="{!! asset('dist/js/demo.js') !!}"></script>
 
 
-<script src="{!! asset('assets/js/jquery.dataTables.min.js') !!}"></script>
+<script src="{!! asset('assets/js/dataTables.min.js') !!}"></script>
 <script src="{!! asset('assets/js/jquery.validate.min.js') !!}"></script>
 <script src="{!! asset('assets/js/sweetalert.js') !!}"></script>
 <script src="{!! asset('assets/js/custom-script.js') !!}"></script>
+<script>
+$(document).ready( function () {
+    $('#datatable').DataTable();
+} );
+</script>
 
 
 

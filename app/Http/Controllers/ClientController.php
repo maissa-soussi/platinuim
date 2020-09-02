@@ -136,10 +136,5 @@ class ClientController extends Controller
         return redirect('/clients')->with('success', 'Client supprimé!');
     }
 
-    public function searchclient(Request $request)
-    {
-        $searchclient = $request->get('searchclient');
-        $clients = Client::where('nom', 'LIKE', '%'.$searchclient.'%')->orderBy('nom')->paginate(10);
-        return view('clients.index', compact('clients'));
-    }
+    
 }
