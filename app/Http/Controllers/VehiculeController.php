@@ -16,9 +16,9 @@ class VehiculeController extends Controller
      */
     public function index()
     {
-        $vehicules = Vehicule::all();
-        
-        return view('vehicules.index', compact('vehicules'));
+        $vehicule = Vehicule::all();
+        $cat= Categorie::all();
+        return view('vehicules.index', ['vehicule' => $vehicule, 'cat' => $cat ]);
     }
 
     /**
@@ -28,9 +28,7 @@ class VehiculeController extends Controller
      */
     public function create()
     {
-        $cat= Categorie::all();
-        $vehicule= Vehicule::all();
-        return view('vehicules.create', ['vehicule' => $vehicule, 'cat' => $cat ]);
+        //
     }
 
     public function search(Request $request)
