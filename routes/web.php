@@ -26,4 +26,5 @@ Route::get("/dashboard", "AdminHomeController@dashboard")->name('dashboard') ;
 Route::resource('categories', 'CategorieController');
 Route::resource('vehicules', 'VehiculeController');
 Route::resource('clients', 'ClientController');
+Route::resource('reservations', 'ReservationController');
 
