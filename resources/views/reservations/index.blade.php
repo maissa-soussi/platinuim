@@ -32,67 +32,33 @@
       <th scope="col">Date début</th>
       <th scope="col">Date fin</th>
       <th scope="col">Montant</th>
-      <th scope="col">#</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody id="myTable">
+  @foreach($reservations as $reservation)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td><a href="#" class="btn btn-primary">
+      <th scope="row">{{ $reservation->id }}</th>
+      <td>{{ $reservation->cinclient }}</td>
+      <td>{{ $reservation->imma_v }}</td>
+      <td>{{ $reservation->date_deb }}</td>
+
+      <td>{{ $reservation->date_fin }}</td>
+      <td>{{ $reservation->montant }} dt</td>
+      <td class="table-buttons">
+       <a href="{{ route('reservations.edit', $reservation) }}" class="btn btn-primary">
          <i class="fas fa-pencil-alt" ></i>
        </a>
-       <form method="POST" action="#">
+       <form method="POST" action="{{ route('reservations.destroy', $reservation) }}">
         @csrf
         @method('DELETE')
            <button type="submit" class="btn btn-danger">
              <i class="fa fa-trash"></i>
            </button>
        </form>
-       </td>
+     </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td><a href="#" class="btn btn-primary">
-         <i class="fas fa-pencil-alt" ></i>
-       </a>
-       <form method="POST" action="#">
-        @csrf
-        @method('DELETE')
-           <button type="submit" class="btn btn-danger">
-             <i class="fa fa-trash"></i>
-           </button>
-       </form>
-       </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td><a href="#" class="btn btn-primary">
-         <i class="fas fa-pencil-alt" ></i>
-       </a>
-       <form method="POST" action="#">
-        @csrf
-        @method('DELETE')
-           <button type="submit" class="btn btn-danger">
-             <i class="fa fa-trash"></i>
-           </button>
-       </form>
-       </td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
     

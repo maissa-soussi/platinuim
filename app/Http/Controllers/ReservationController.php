@@ -26,9 +26,14 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $reservations = Reservation::all();
+        //
+    }
 
-        return view('reservations.create', compact('reservations'));
+    public function planning()
+    {
+        $reservation = Reservation::all();
+
+        return view('reservations.planning');
     }
 
     /**
@@ -39,7 +44,25 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "cinclient"=>"required",
+            "imma_v"=>"required",
+            "date_deb"=>"required",
+            "date_fin"=>"required",
+            "paiement"=>"required",
+        ]);
+
+        $reservation = new Reservation([
+            'cinclient' => $request->get('cinclient'),
+            'imma_v' => $request->get('imma_v'),
+            'date_deb' => $request->get('date_deb'),
+            'date_fin' => $request->get('date_fin'),
+            'paiement' => $request->get('paiement'),
+        ]);
+
+        $reservation->save();
+
+        return redirect('planning')->with('success', 'Ajout avec succes!');
     }
 
     /**
