@@ -15,6 +15,13 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string("cinclient",10);
+            $table->string("imma_v",255);
+            $table->date("date_deb")->nullable();
+            $table->date("date_fin")->nullable();
+            $table->double("montant")->nullable();
+            $table->integer("paiement")->nullable();
+            $table->integer("recuperation")->nullable();
             $table->timestamps();
         });
     }
