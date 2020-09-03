@@ -58,39 +58,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-calendar-plus nav-icon"></i>
-                  <p>Nouvelle réservation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-calendar-alt nav-icon"></i>
+                <a href="{{ route('reservations.create') }}" class="nav-link">
+                <p> &nbsp;&nbsp; </p><i class="far fa-calendar-alt nav-icon"></i>
                   <p>Planning</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-list-alt nav-icon"></i>
-                  <p>Liste des réservation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-list-alt nav-icon"></i>
-                  <p>Liste des récupérations</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-list-alt nav-icon"></i>
-                  <p>Liste des factures</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-list-alt nav-icon"></i>
-                  <p>Liste des impayés</p>
+                <a href="{{ route('reservations.index') }}" class="nav-link">
+                <p> &nbsp;&nbsp; </p><i class="far fa-list-alt nav-icon"></i>
+                  <p>Liste des réservations</p>
                 </a>
               </li>
             </ul>

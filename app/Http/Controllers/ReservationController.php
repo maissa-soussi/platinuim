@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Reservation;
 
 class ReservationController extends Controller
 {
@@ -13,7 +14,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations = Reservation::all();
+
+        return view('reservations.index', compact('reservations'));
     }
 
     /**
@@ -23,7 +26,9 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        $reservations = Reservation::all();
+
+        return view('reservations.create', compact('reservations'));
     }
 
     /**

@@ -50,32 +50,6 @@
     </span>
     @endforeach 
 
-<!--
-<table class="table table-striped mt-3">
- <tbody>
-  @foreach($categories as $categorie)
-   <tr>
-     <td>{{ $categorie->categorie }}</td>
-     <td class="table-buttons">
-       <a href="{{ route('categories.show', $categorie) }}" class="btn btn-success">
-         <i class="fa fa-eye"></i>
-       </a>
-       <a href="{{ route('categories.edit', $categorie) }}" class="btn btn-primary">
-         <i class="fas fa-pencil-alt" ></i>
-       </a>
-       <form method="POST" action="{{ route('categories.destroy', $categorie) }}">
-        @csrf
-        @method('DELETE')
-           <button type="submit" class="btn btn-danger">
-             <i class="fa fa-trash"></i>
-           </button>
-       </form>
-     </td>
-   </tr>
- @endforeach
- </tbody>
-</table>
--->
 <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
