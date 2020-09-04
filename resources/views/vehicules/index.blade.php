@@ -166,6 +166,12 @@
         </div>
 
         <div class="form-group">
+            <label for="prix">Prix</label>
+            <input type="text" name="prix" 
+                   value="{{ old('prix') }}" class="form-control" id="prix">
+        </div>
+
+        <div class="form-group">
             <label for="options">Option</label>
             <textarea name="options" class="form-control" id="options" rows="3">{{ old('options') }}</textarea>
         </div>

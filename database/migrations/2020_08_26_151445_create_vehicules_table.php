@@ -24,6 +24,7 @@ class CreateVehiculesTable extends Migration
             $table->integer("nb_vit")->nullable();
             $table->string("couleur",255)->nullable();
             $table->string("options")->nullable();
+            $table->double("prix")->nullable();
             $table->string("alertes")->nullable();
             $table->string("reparations")->nullable();
             $table->string("visites_tech")->nullable();

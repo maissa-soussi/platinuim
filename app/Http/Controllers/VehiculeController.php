@@ -51,6 +51,7 @@ class VehiculeController extends Controller
             "puissance_fiscale"=>"required|not_in:-1",
             "nb_vit"=>"required|not_in:-1",
             "options"=>"required",
+            "prix"=>"required",
             "photo"=>"required|image|max:10240",
         ]);
 
@@ -64,6 +65,7 @@ class VehiculeController extends Controller
             'puissance_fiscale' => $request->get('puissance_fiscale'),
             'nb_vit' => $request->get('nb_vit'),
             'options' => $request->get('options'),
+            'prix' => $request->get('prix'),
         ]);
 
         if ($request->hasFile('photo')) {
@@ -127,6 +129,7 @@ class VehiculeController extends Controller
                 "puissance_fiscale"=>"required|not_in:-1",
                 "nb_vit"=>"required|not_in:-1",
                 "options"=>"required",
+                "prix"=>"required",
                 "status"=>"required",
                 "photo"=>"image|max:10240",
                 
@@ -145,6 +148,7 @@ class VehiculeController extends Controller
                 "puissance_fiscale"=>"required|not_in:-1",
                 "nb_vit"=>"required|not_in:-1",
                 "options"=>"required",
+                "prix"=>"required",
                 "status"=>"required",               
             ]);
 
@@ -159,6 +163,7 @@ class VehiculeController extends Controller
         'puissance_fiscale' => $request->puissance_fiscale,
         'nb_vit' => $request->nb_vit,
         'options' => $request->options,
+        'prix' => $request->prix,
         'status' => $request->status,
         'photo' => $image_name,
         );

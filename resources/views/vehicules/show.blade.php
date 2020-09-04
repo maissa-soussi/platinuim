@@ -44,6 +44,8 @@
        <p>{{ $vehicule->couleur }}</p>
        <h3>Options</h3>
        <p>{{ $vehicule->options }}</p>
+       <h3>Prix</h3>
+       <p>{{ $vehicule->prix }}</p>
        <h3>Status</h3>
        @if($vehicule->status)
        <p>Disponible</p>

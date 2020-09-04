@@ -58,13 +58,13 @@
 
         <div class="form-group">
             <label for="date_deb">Date debut</label>
-            <input type="text" name="date_deb" 
+            <input type="date" name="date_deb" 
                    value="{{ old('date_deb') }}" class="form-control" id="date_deb">
         </div>
 
         <div class="form-group">
             <label for="date_fin">Date fin</label>
-            <input type="text" name="date_fin" 
+            <input type="date" name="date_fin" 
                    value="{{ old('date_fin') }}" class="form-control" id="date_fin">
         </div>
 

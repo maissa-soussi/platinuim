@@ -111,6 +111,13 @@
                         <option value="6" @if($vehicule->nb_vit == 6) selected="selected" @endif>6</option>
                         <option value="7" @if($vehicule->nb_vit == 7) selected="selected" @endif>7</option>
                         </select>
+        
+            <div class="form-group">
+            <label for="prix">Prix</label>
+            <input type="text" name="prix" 
+                   value="{{ $vehicule->prix }}" class="form-control" id="prix">
+        </div>
+
         </div>
         <div class="form-group">
                         <label for="v_status">Status</label>
