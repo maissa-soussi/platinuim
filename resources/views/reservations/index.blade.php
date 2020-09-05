@@ -65,15 +65,93 @@
              <i class="fa fa-trash"></i>
            </button>
        </form>
+       <a class="btn btn-info"  href="#" data-toggle="modal" data-target="#myModal">
+         <i class="fa fa-eye" aria-hidden="true"></i>
+       </a>
      </td>
     </tr>
     @endforeach
   </tbody>
 </table>
+
+
+<div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <table style="text-align:center">
+            <tr>
+            <td><img src="dist/img/logo.jpg" alt="Logo" width="110" height="110"></td>
+            <td><h3>Contrat de Location de voiture</h3></td>
+            </tr>
+            </table>
+                <form method="POST" action="" style="width:70%; margin-left:15%;">
+                    {{ csrf_field() }}
+                    
+                    <div class="card">
+                      <div class="card-header">
+                              <table width="500px">
+                                <tr>
+                                  <td><label>Réf: 001</label></td>
+                                  <td><label>Montant: 300 dt</label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>De: 05/09/2020</label></td>
+                                    <td> <label>à: 10/09/2020</label></td>
+                                </tr>  
+                              </table>
+                      </div>
+                      <div class="card-body">
+                       <h5 class="card-title"> Vos informations</h5>
+                       <br/> 
+                        <table class="card-text" width="500px">
+                                <tr>
+                                  <td><label>Mr/MMe: Soussi Maissa</label></td>
+                                  <td><label>Cin: 12365478</label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>E-mail: maissa.soussi@yahoo.com</label></td>
+                                    <td> <label>Tel: 52588626</label></td>
+                                </tr> 
+                                <tr>
+                                    <td style="text-align:center"><label>Adresse: Soukra, Ariana</label></td>
+                                </tr> 
+                        </table>
+                        <br/> <br/>
+                        <h5 class="card-title"> Voiture louée</h5> 
+                        <br/> 
+                        <table class="card-text" width="500px">
+                                <tr>
+                                  <td><label>Imma: 197 Tu 1258</label></td>
+                                  <td><label>Type: Volkswagen, golf8</label></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Couleur: Blanche</label></td>
+                                    <td> <label>Prix/jr: 50 Dt </label></td>
+                                </tr> 
+                                <tr>
+                                    <td><label>Apropos : 4ch, 6....</label></td>
+                                </tr> 
+                        </table>
+                      </div>
+                      <div class="card-footer text-muted" style="text-align:center">
+                         
+                            <button style="cursor:pointer" type="submit" class="btn btn-primary">Imprimer</button>
+                          
+                      </div>
+                    </div> 
+                </form>
+                <input class="btn btn-default" data-dismiss="modal" value="X">
+            </div>
+        </div>
+    </div>
     
     </section>
     <!-- /.content -->
   </div>
+
+
+
+
 
 
   <script>
