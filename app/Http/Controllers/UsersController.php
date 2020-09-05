@@ -25,7 +25,8 @@ class UsersController extends Controller
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'role' => 'required'
         ]);
         
         $user = User::create(request(['name', 'email', 'password','role']));

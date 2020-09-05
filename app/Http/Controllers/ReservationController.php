@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reservation;
+use DB;
 
 class ReservationController extends Controller
 {
@@ -51,7 +52,9 @@ class ReservationController extends Controller
             "date_fin"=>"required",
             "paiement"=>"required",
         ]);
-
+        $imma=$request->get('imma_v');
+        $user = DB::table('vehicules')->where(['matricule'=>$imma])->first();
+        echo $user;
         $reservation = new Reservation([
             'cinclient' => $request->get('cinclient'),
             'imma_v' => $request->get('imma_v'),
