@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->sortBy('name');;
         
         return view('register', compact('users'));
     }

@@ -16,7 +16,7 @@ class VehiculeController extends Controller
      */
     public function index()
     {
-        $vehicule = Vehicule::all();
+        $vehicule = Vehicule::all()->sortBy('vehicule');;
         $cat= Categorie::all();
         return view('vehicules.index', ['vehicule' => $vehicule, 'cat' => $cat ]);
     }

@@ -15,7 +15,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::all();
+        $reservations = Reservation::all()->sortByDesc('updated_at');
 
         return view('reservations.index', compact('reservations'));
 
