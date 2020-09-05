@@ -37,7 +37,11 @@
   </thead>
   <tbody id="myTable">
   @foreach($reservations as $reservation)
+  @if($reservation->recuperation)
+    <tr style="color:#b4b4d4;">
+    @else
     <tr>
+    @endif
       <th scope="row">{{ $reservation->id }}</th>
       <td>{{ $reservation->cinclient }}</td>
       <td>{{ $reservation->imma_v }}</td>
