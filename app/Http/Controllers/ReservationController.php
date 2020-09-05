@@ -18,6 +18,7 @@ class ReservationController extends Controller
         $reservations = Reservation::all();
 
         return view('reservations.index', compact('reservations'));
+
     }
 
     /**
@@ -113,8 +114,9 @@ class ReservationController extends Controller
             "imma_v"=>"required",
             "date_deb"=>"required",
             "date_fin"=>"required",
-            "paiement"=>"required|not_in:-1",
+            "paiement"=>"required",
             "recuperation"=>"required",
+
         ]);
 
         $reservation = Reservation::find($id);
@@ -124,6 +126,14 @@ class ReservationController extends Controller
         $reservation->date_fin = $request->get('date_fin');
         $reservation->paiement = $request->get('paiement');
         $reservation->recuperation = $request->get('recuperation');
+        $vehicules = DB::table('vehicules')->where(['matricule'=>$imma_v])->first();
+        $date1 = strtotime($reservation->date_deb);
+        $date2 = strtotime($reservation->date_fin);
+        
+        $nbJoursTimestamp = $date2 - $date1;
+        $nbJours = $nbJoursTimestamp/86400+1;
+        $pr=$nbJours * $vehicules->prix;
+        $reservation->montant = $pr;
         $reservation->save();
 
         return redirect('/reservations')->with('success', 'Modification avec succes!');
