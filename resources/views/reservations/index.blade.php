@@ -44,7 +44,12 @@
       <td>{{ $reservation->date_deb }}</td>
 
       <td>{{ $reservation->date_fin }}</td>
-      <td>{{ $reservation->montant }} dt</td>
+      <td>@if($reservation->paiement)
+      {{ $reservation->montant }} dt <i class="fa fa-check-circle" aria-hidden="true"></i>
+      @else 
+      {{ $reservation->montant }} dt
+      @endif
+      </td>
       <td class="table-buttons">
        <a href="{{ route('reservations.edit', $reservation) }}" class="btn btn-primary">
          <i class="fas fa-pencil-alt" ></i>
