@@ -69,7 +69,7 @@
         </div>
 
         <div class="form-group">
-        <label for="carburant">Paiement</label>
+        <label for="paiement">Paiement</label>
                         <select class="form-control" name="paiement" id="paiement">
                         <option value="-1">Select </option>
                         <option value="0">payée</option>

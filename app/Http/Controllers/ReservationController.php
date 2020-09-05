@@ -50,7 +50,7 @@ class ReservationController extends Controller
             "imma_v"=>"required",
             "date_deb"=>"required",
             "date_fin"=>"required",
-            "paiement"=>"required",
+            "paiement"=>"required|not_in:-1",
         ]);
         $imma=$request->get('imma_v');
         $vehicules = DB::table('vehicules')->where(['matricule'=>$imma])->first();
@@ -94,7 +94,9 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reservation = Reservation::find($id);
+
+        return view('reservations.edit', compact('reservation'));
     }
 
     /**
@@ -106,7 +108,25 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "cinclient"=>"required",
+            "imma_v"=>"required",
+            "date_deb"=>"required",
+            "date_fin"=>"required",
+            "paiement"=>"required|not_in:-1",
+            "recuperation"=>"required",
+        ]);
+
+        $reservation = Reservation::find($id);
+        $reservation->cinclient = $request->get('cinclient');
+        $reservation->imma_v = $request->get('imma_v');
+        $reservation->date_deb = $request->get('date_deb');
+        $reservation->date_fin = $request->get('date_fin');
+        $reservation->paiement = $request->get('paiement');
+        $reservation->recuperation = $request->get('recuperation');
+        $reservation->save();
+
+        return redirect('/reservations')->with('success', 'Modification avec succes!');
     }
 
     /**
@@ -117,6 +137,9 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $reservation->delete();
+
+        return redirect('/reservations')->with('success', 'Réservation supprimée!');
     }
 }
