@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->sortBy('name');;
         
         return view('register', compact('users'));
     }
@@ -35,7 +35,13 @@ class UsersController extends Controller
         
         return redirect()->to('users');
     }
+    public function destroy($id)
+    {
+        $client = User::find($id);
+        $client->delete();
 
+        return redirect('/register');
+    }
     
      
    

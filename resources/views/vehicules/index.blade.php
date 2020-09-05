@@ -9,9 +9,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Véhicules</h1>
-          </div><!-- /.col -->
+         
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -41,8 +39,8 @@
       </div>
     @endif
 
-<table id="vehiculetable" class="table table-striped mt-3">
- <thead>
+<table id="vehiculetable" class="table mt-3">
+ <thead class="thead-light">
    <tr>
      <th scope="col">Véhicule</th>
      <th scope="col">Photo</th>

@@ -11,19 +11,31 @@
 <table class="table table-sm table-dark bg-navy" style="width:70%; margin-left:15%;">
   <thead>
     <tr style="height:35px;">
-      <th scope="col">#</th>
+      
       <th scope="col">Nom & Prénom</th>
       <th scope="col">Mail </th>
       <th scope="col">Poste</th>
+      <th scope="col">#</th>
     </tr>
   </thead>
   <tbody>
   @foreach($users as $user)
     <tr style="height:35px;">
-      <th scope="row">{{ $user->id }} </th>
       <td>{{ $user->name }}</td>
       <td>{{ $user->email }}</td>
       <td>{{ $user->role }}</td>
+      <td>
+      <a href="" class="btn">
+         <i class="fas fa-pencil-alt" style="color:green;"></i>
+       </a>
+       <form method="POST" action="">
+        @csrf
+        @method('DELETE')
+           <button type="submit" class="btn">
+             <i class="fa fa-trash" style="color:red;"></i>
+           </button>
+       </form>
+      </td>
     </tr>
     @endforeach
     </tbody>
