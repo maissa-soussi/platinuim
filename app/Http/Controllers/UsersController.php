@@ -35,7 +35,13 @@ class UsersController extends Controller
         
         return redirect()->to('users');
     }
+    public function destroy($id)
+    {
+        $client = User::find($id);
+        $client->delete();
 
+        return redirect('/register');
+    }
     
      
    
