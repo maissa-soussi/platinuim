@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reservation;
 use DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class ReservationController extends Controller
 {
@@ -54,7 +56,9 @@ class ReservationController extends Controller
             "paiement"=>"required|not_in:-1",
         ]);
         $imma=$request->get('imma_v');
+        $cinc=$request->get('cinclient');
         $vehicules = DB::table('vehicules')->where(['matricule'=>$imma])->first();
+        $clients = DB::table('clients')->where(['cin'=>$cinc])->first();
         $date1 = strtotime($request->get('date_deb'));
         $date2 = strtotime($request->get('date_fin'));
         
@@ -72,7 +76,7 @@ class ReservationController extends Controller
         ]);
 
         $reservation->save();
-
+        Mail::to($clients->email)->send(new SendMail($reservation));
         return redirect('planning')->with('success', 'Ajout avec succes!');
     }
 
