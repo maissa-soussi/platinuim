@@ -105,7 +105,7 @@
                        <br/> 
                         <table class="card-text" width="500px">
                                 <tr>
-                                  <td><label>Mr/MMe: Soussi Maissa</label></td>
+                                  <td><label>Mr/Mme: Soussi Maissa</label></td>
                                   <td><label>Cin: 12365478</label></td>
                                 </tr>
                                 <tr>
@@ -116,13 +116,13 @@
                                     <td style="text-align:center"><label>Adresse: Soukra, Ariana</label></td>
                                 </tr> 
                         </table>
-                        <br/> <br/>
-                        <h5 class="card-title"> Voiture louée</h5> 
                         <br/> 
+                        <h5 class="card-title"> Voiture louée</h5> 
+                        <br/> <br/> 
                         <table class="card-text" width="500px">
                                 <tr>
                                   <td><label>Imma: 197 Tu 1258</label></td>
-                                  <td><label>Type: Volkswagen, golf8</label></td>
+                                  <td><label>Type: Volkswagen golf8</label></td>
                                 </tr>
                                 <tr>
                                     <td><label>Couleur: Blanche</label></td>
