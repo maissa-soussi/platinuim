@@ -41,8 +41,8 @@
       </div>
     @endif
 
-<table id="vehiculetable" class="table table-striped mt-3">
- <thead>
+<table id="vehiculetable" class="table mt-3">
+ <thead class="thead-light">
    <tr>
      <th scope="col">Véhicule</th>
      <th scope="col">Photo</th>

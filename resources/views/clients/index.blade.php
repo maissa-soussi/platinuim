@@ -37,8 +37,8 @@
       </div>
     @endif
 
-<table id="clienttable" class="table table-striped mt-3">
- <thead>
+<table id="clienttable" class="table mt-3">
+ <thead class="thead-light">
    <tr>
      <th scope="col">Nom</th>
      <th scope="col">Tel</th>
