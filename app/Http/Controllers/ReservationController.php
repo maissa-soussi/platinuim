@@ -53,14 +53,21 @@ class ReservationController extends Controller
             "paiement"=>"required",
         ]);
         $imma=$request->get('imma_v');
-        $user = DB::table('vehicules')->where(['matricule'=>$imma])->first();
-        echo $user;
+        $vehicules = DB::table('vehicules')->where(['matricule'=>$imma])->first();
+        $date1 = strtotime($request->get('date_deb'));
+        $date2 = strtotime($request->get('date_fin'));
+        
+        $nbJoursTimestamp = $date2 - $date1;
+        $nbJours = $nbJoursTimestamp/86400+1;
+        $pr=$nbJours * $vehicules->prix;
         $reservation = new Reservation([
             'cinclient' => $request->get('cinclient'),
             'imma_v' => $request->get('imma_v'),
             'date_deb' => $request->get('date_deb'),
             'date_fin' => $request->get('date_fin'),
+            'montant' => $pr,
             'paiement' => $request->get('paiement'),
+            
         ]);
 
         $reservation->save();
