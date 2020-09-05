@@ -119,6 +119,14 @@ class ReservationController extends Controller
 
         ]);
 
+        $imma=$request->get('imma_v');
+        $vehicules = DB::table('vehicules')->where(['matricule'=>$imma])->first();
+        $date1 = strtotime($request->get('date_deb'));
+        $date2 = strtotime($request->get('date_fin'));
+        
+        $nbJoursTimestamp = $date2 - $date1;
+        $nbJours = $nbJoursTimestamp/86400+1;
+        $pr=$nbJours * $vehicules->prix;
         $reservation = Reservation::find($id);
         $reservation->cinclient = $request->get('cinclient');
         $reservation->imma_v = $request->get('imma_v');
@@ -126,13 +134,6 @@ class ReservationController extends Controller
         $reservation->date_fin = $request->get('date_fin');
         $reservation->paiement = $request->get('paiement');
         $reservation->recuperation = $request->get('recuperation');
-        $vehicules = DB::table('vehicules')->where(['matricule'=>$imma_v])->first();
-        $date1 = strtotime($reservation->date_deb);
-        $date2 = strtotime($reservation->date_fin);
-        
-        $nbJoursTimestamp = $date2 - $date1;
-        $nbJours = $nbJoursTimestamp/86400+1;
-        $pr=$nbJours * $vehicules->prix;
         $reservation->montant = $pr;
         $reservation->save();
 

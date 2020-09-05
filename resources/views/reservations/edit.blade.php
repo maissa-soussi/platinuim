@@ -61,14 +61,14 @@
         <div class="form-group">
         <label for="paiement">Paiement</label>
                         <select class="form-control" name="paiement" id="paiement">
-                        <option value="0" @if(!$reservation->paiement) selected="selected" @endif>payée</option>
-                        <option value="1" @if($reservation->paiement) selected="selected" @endif>impayée</option>
+                        <option value="0" @if(!$reservation->paiement) selected="selected" @endif>impayée</option>
+                        <option value="1" @if($reservation->paiement) selected="selected" @endif>payée</option>
                         </select>
         </div>
 
         <div class="form-group">
-        <label for="paiement">Récuperation</label>
-                        <select class="form-control" name="paiement" id="paiement">
+        <label for="recuperation">Récuperation</label>
+                        <select class="form-control" name="recuperation" id="recuperation">
                         <option value="0" @if(!$reservation->recuperation) selected="selected" @endif>non récuperé</option>
                         <option value="1" @if($reservation->recuperation) selected="selected" @endif>récuperé</option>
                         </select>

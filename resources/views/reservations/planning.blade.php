@@ -72,8 +72,8 @@
         <label for="paiement">Paiement</label>
                         <select class="form-control" name="paiement" id="paiement">
                         <option value="-1">Select </option>
-                        <option value="0">payée</option>
-                        <option value="1">impayée</option>
+                        <option value="0">impayée</option>
+                        <option value="1">payée</option>
                         </select>
         </div>
 
