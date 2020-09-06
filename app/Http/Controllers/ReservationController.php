@@ -74,7 +74,6 @@ class ReservationController extends Controller
             'paiement' => $request->get('paiement'),
             
         ]);
-        $reservation->save();
         $data = array(
             'cinclient' => $request->get('cinclient'),
             'imma_v' => $request->get('imma_v'),
@@ -90,12 +89,11 @@ class ReservationController extends Controller
             'vehicule' => $vehicules->vehicule,
             'couleur' => $vehicules->couleur,
             'prix' => $vehicules->prix,
-            'id' => $reservation->id,
 
         );
 
-
-        Mail::to($clients->email)->send(new SendMail($data));
+        $reservation->save();
+        //Mail::to($clients->email)->send(new SendMail($data));
         return redirect('planning')->with('success', 'Ajout avec succes!');
     }
 
