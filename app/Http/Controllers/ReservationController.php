@@ -74,9 +74,28 @@ class ReservationController extends Controller
             'paiement' => $request->get('paiement'),
             
         ]);
-
         $reservation->save();
-        Mail::to($clients->email)->send(new SendMail($reservation));
+        $data = array(
+            'cinclient' => $request->get('cinclient'),
+            'imma_v' => $request->get('imma_v'),
+            'date_deb' => $request->get('date_deb'),
+            'date_fin' => $request->get('date_fin'),
+            'montant' => $pr,
+            'paiement' => $request->get('paiement'),
+            'nom' => $clients->nom,
+            'email' => $clients->email,
+            'phone_nb' => $clients->phone_nb,
+            'adresse' => $clients->adresse,
+            'matricule' => $vehicules->matricule,
+            'vehicule' => $vehicules->vehicule,
+            'couleur' => $vehicules->couleur,
+            'prix' => $vehicules->prix,
+            'id' => $reservation->id,
+
+        );
+
+
+        Mail::to($clients->email)->send(new SendMail($data));
         return redirect('planning')->with('success', 'Ajout avec succes!');
     }
 

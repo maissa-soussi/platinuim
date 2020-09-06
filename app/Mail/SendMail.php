@@ -10,15 +10,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $reservation;
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($reservation)
+    public function __construct($data)
     {
-        $this->reservation = $reservation;
+        $this->data = $data;
     }
 
     /**
@@ -28,7 +28,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from('platinuim.auto@gmail.com')->subject('reservation')->view('dynamic_email_template')->with('reservation', $this->reservation);
+        return $this->from('platinuim.auto@gmail.com')->subject('reservation')->view('dynamic_email_template')->with('data', $this->data);
     }
 }
 
