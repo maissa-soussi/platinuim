@@ -1,4 +1,5 @@
 @extends("layouts.layout")
+<link href='../lib/main.css' rel='stylesheet' />
 
 @section("title","Platinuim")
 
@@ -84,9 +85,59 @@
             </div>
         </div>
     </div>
+
+
+    
+
+
+
+<div id='calendar-container'>
+    <div id='calendar'></div>
+  </div>
+
+
       
     
     </section>
     <!-- /.content -->
   </div>
 @endsection
+<script src='../lib/main.js'></script>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      height: '100%',
+      expandRows: true,
+      slotMinTime: '08:00',
+      slotMaxTime: '20:00',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      },
+      initialView: 'dayGridMonth',
+      initialDate: '2020-09-12',
+      navLinks: true, // can click day/week names to navigate views
+      editable: true,
+      selectable: true,
+      nowIndicator: true,
+      dayMaxEvents: true, // allow "more" link when too many events
+      events: [
+        
+        @foreach($reservations as $reservation)
+        {
+          title:  {{ $reservation->id }},
+          start: '{{ $reservation->date_deb }}',
+          end: '{{ $reservation->date_fin }}',
+        },
+        @endforeach
+      ]
+    });
+
+    calendar.render();
+  });
+
+</script>

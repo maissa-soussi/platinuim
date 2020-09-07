@@ -35,9 +35,9 @@ class ReservationController extends Controller
 
     public function planning()
     {
-        $reservation = Reservation::all();
+        $reservations = Reservation::all();
 
-        return view('reservations.planning');
+        return view('reservations.planning', compact('reservations'));
     }
 
     /**
