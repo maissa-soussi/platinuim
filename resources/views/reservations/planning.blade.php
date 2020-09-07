@@ -18,7 +18,13 @@
 
     <!-- Main content -->
     <section class="content">
-    <button type="button" href="#" class="btn btn-success" style="float:right; margin-right:5%;" data-toggle="modal" data-target="#myModal">Ajouter</button>
+      <form class="form-inline" style="float:left;" method="POST" action="{{ route('reservations.planning') }}">
+        <label class="sr-only" for="inlineFormInputName2">Matricule de la voiture</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" name="imma_v" placeholder="xx Tu xx">
+
+        <button type="submit" class="btn btn-primary mb-2">Afficher planning</button>
+      </form>
+    <button type="button" href="#" class="btn btn-success" style="float:right; margin-right:5%;" data-toggle="modal" data-target="#myModal">Ajouter une réservation</button>
      <br><br><br>
 @if(session()->get('success'))
    <div class="alert alert-success mt-3">
@@ -127,8 +133,9 @@
       dayMaxEvents: true, // allow "more" link when too many events
       events: [
         
+    
         @foreach($reservations as $reservation)
-        {
+        { 
           title:  {{ $reservation->id }},
           start: '{{ $reservation->date_deb }}',
           end: '{{ $reservation->date_fin }}',

@@ -33,9 +33,9 @@ class ReservationController extends Controller
         //
     }
 
-    public function planning()
-    {
-        $reservations = Reservation::all();
+    public function planning(Request $request)
+    {   $imma=$request->get('imma_v');
+        $reservations = Reservation::all()->where(['imma_v'=>$imma]);
 
         return view('reservations.planning', compact('reservations'));
     }
