@@ -43,6 +43,7 @@
         </li>
       </ul>
       <form method="POST" action="{{ route('vehicules.update', $vehicule->id) }}" enctype="multipart/form-data">
+      
      @csrf
      @method('PATCH') 
       <div class="tab-content" id="pills-tabContent">
@@ -132,20 +133,20 @@
                         <option value="7" @if($vehicule->nb_vit == 7) selected="selected" @endif>7</option>
                         </select>
         </div>
-            <div class="form-group" style="float:center;">
+        <div class="form-group" style="float:left;">
             <label for="prix">Prix</label>
             <input type="text" name="prix" value="{{ $vehicule->prix }}" class="form-control" id="prix">
         </div>
 
         
-        <div class="form-group"  style="float:center;">
+        <div class="form-group"  style="float:right;">
                         <label for="v_status">Status</label>
                         <select class="form-control" name="status" id="status">
                         <option value="1" @if($vehicule->status) selected="selected" @endif>Disponible</option>
                         <option value="0" @if(!$vehicule->status) selected="selected" @endif>sous location</option>
                         </select>
                       </div>
-
+                      <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
         <div class="form-group">
             <label for="options">Option</label>
             <textarea name="options" class="form-control" id="options" rows="3">{{ $vehicule->options }}</textarea>
@@ -181,7 +182,7 @@
             <input type="date" name="assurences" 
                    value="{{ $vehicule->assurences }}" class="form-control" id="assurences">
         </div>
-         <br/>
+         <br/> <br/> <br/> <br/> <br/> <br/> 
         <div class="form-group" style="float:center;" >
             <label for="repdate">Réparations</label>
             <input type="date" name="repdate" 
@@ -193,8 +194,9 @@
         </div>
       </div>
         
-
+      
         <button type="submit" class="btn btn-success" style="margin-top:150px; margin-left:-60px;">Modifier</button>
+        
     </form>
 </div>
 </div>
