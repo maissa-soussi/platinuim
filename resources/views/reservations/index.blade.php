@@ -82,19 +82,19 @@
             <td><h3>Contrat de Location de voiture</h3></td>
             </tr>
             </table>
-                <form method="POST" action="" style="width:70%; margin-left:15%;">
+                <form method="get" action="/contrat" style="width:70%; margin-left:15%;">
                     {{ csrf_field() }}
                     
                     <div class="card">
                       <div class="card-header">
                               <table width="500px">
                                 <tr>
-                                  <td><label>Réf: 001</label></td>
-                                  <td><label>Montant: 300 dt</label></td>
+                                  <td><label>Réf: {{ $reservation->id }}</label></td>
+                                  <td><label>Montant: {{ $reservation->montant }} dt</label></td>
                                 </tr>
                                 <tr>
-                                    <td><label>De: 05/09/2020</label></td>
-                                    <td> <label>à: 10/09/2020</label></td>
+                                    <td><label>De: {{ $reservation->date_deb }}</label></td>
+                                    <td> <label>à: {{ $reservation->date_fin }}</label></td>
                                 </tr>  
                               </table>
                       </div>
@@ -103,7 +103,7 @@
                        <br/> 
                         <table class="card-text" width="500px">
                                 <tr>
-                                  <td><label>Mr/Mme: Soussi Maissa</label></td>
+                                  <td><label>Mr/Mme: {{ $client->nom }}</label></td>
                                   <td><label>Cin: 12365478</label></td>
                                 </tr>
                                 <tr>

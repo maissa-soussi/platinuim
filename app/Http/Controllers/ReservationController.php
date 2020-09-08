@@ -108,9 +108,16 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function contrat($id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $imma=$reservation->imma_v;
+        $cinc=$reservation->cinclient;
+        $vehicule = Vehicule::find($imma);
+        $client = Client::find($cinc);
+        
+
+        return view('reservations.edit',['reservation' => $reservation, 'vehicule' => $vehicule, 'client' => $client]);
     }
 
     /**
