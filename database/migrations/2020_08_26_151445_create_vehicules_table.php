@@ -32,7 +32,6 @@ class CreateVehiculesTable extends Migration
             $table->date("vignettes")->nullable();
             $table->date("assurences")->nullable();
             $table->string("photo")->nullable();
-            $table->integer("status")->default(1);
             $table->timestamps();
         });
     }

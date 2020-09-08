@@ -139,14 +139,6 @@
         </div>
 
         
-        <div class="form-group"  style="float:right;">
-                        <label for="v_status">Status</label>
-                        <select class="form-control" name="status" id="status">
-                        <option value="1" @if($vehicule->status) selected="selected" @endif>Disponible</option>
-                        <option value="0" @if(!$vehicule->status) selected="selected" @endif>sous location</option>
-                        </select>
-                      </div>
-                      <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
         <div class="form-group">
             <label for="options">Option</label>
             <textarea name="options" class="form-control" id="options" rows="3">{{ $vehicule->options }}</textarea>

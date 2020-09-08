@@ -12,7 +12,7 @@ class AdminHomeController extends Controller
 {
     public function dashboard() {
         $vehicules = Vehicule::count();
-        $souslocation = DB::table('vehicules')->where('status', 'like', 0)->count();
+        $souslocation = DB::table('reservations')->where('recuperation', 'like', 0)->count();
         $clients = Client::count();
         $reservations = Reservation::count();
         $data = array(
