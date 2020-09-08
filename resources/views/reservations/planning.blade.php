@@ -18,12 +18,16 @@
 
     <!-- Main content -->
     <section class="content">
-      <form class="form-inline" style="float:left;" method="POST" action="{{ route('reservations.planning') }}">
-        <label class="sr-only" for="inlineFormInputName2">Matricule de la voiture</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" name="imma_v" placeholder="xx Tu xx">
-
-        <button type="submit" class="btn btn-primary mb-2">Afficher planning</button>
-      </form>
+     <div class="col-md-5">
+     <form action="/search" method="get">
+     <div class="input-group">
+     <input type="search" name="search" class="form-control" placeholder="999 tn 9999">
+     <span class="input-group-prepend">
+     <button type="submit" class="btn btn-primary">recherche par matricule</button>
+     </span>
+     </div>
+     </form>
+     </div>
     <button type="button" href="#" class="btn btn-success" style="float:right; margin-right:5%;" data-toggle="modal" data-target="#myModal">Ajouter une réservation</button>
      <br><br><br>
 @if(session()->get('success'))
@@ -116,19 +120,12 @@
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       height: '100%',
-      expandRows: true,
-      slotMinTime: '08:00',
-      slotMaxTime: '20:00',
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
-      initialDate: '2020-09-12',
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      selectable: true,
       nowIndicator: true,
       dayMaxEvents: true, // allow "more" link when too many events
       events: [

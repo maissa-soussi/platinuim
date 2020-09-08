@@ -28,4 +28,5 @@ Route::resource('vehicules', 'VehiculeController');
 Route::resource('clients', 'ClientController');
 Route::resource('reservations', 'ReservationController');
 Route::get("/planning", "ReservationController@planning")->name('planning') ;
+Route::get("/search", "ReservationController@search") ;
 

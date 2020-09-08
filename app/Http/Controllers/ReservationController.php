@@ -33,13 +33,18 @@ class ReservationController extends Controller
         //
     }
 
-    public function planning(Request $request)
-    {   $imma=$request->get('imma_v');
-        $reservations = Reservation::all()->where(['imma_v'=>$imma]);
-
+    public function planning()
+    {   
+        $reservations = Reservation::all();
         return view('reservations.planning', compact('reservations'));
     }
 
+    public function search(Request $request){
+        $search = $request->get('search');
+        $reservations = DB::table('reservations')->where('imma_v', 'like', '%'.$search.'%');
+        $reservations = $reservations->get();
+        return view('reservations.planning', ['reservations' => $reservations]);
+    }
     /**
      * Store a newly created resource in storage.
      *
