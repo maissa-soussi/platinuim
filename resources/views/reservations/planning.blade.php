@@ -21,7 +21,7 @@
      <div class="col-md-5" style="float:left;">
      <form action="/search" method="get">
      <div class="input-group">
-     <input type="search" name="search" class="form-control" placeholder="999 tn 9999">
+     <input type="search" name="search" class="form-control" placeholder="--- Tn ----">
      <span class="input-group-prepend">
      <button type="submit" class="btn btn-primary">recherche par matricule</button>
      </span>
