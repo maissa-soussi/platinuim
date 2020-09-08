@@ -9,9 +9,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Modifier véhicule</h1>
-          </div><!-- /.col -->
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -32,47 +30,69 @@
       </div>
     @endif
 
-    <form method="POST" action="{{ route('vehicules.update', $vehicule->id) }}" enctype="multipart/form-data">
+    
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Véhicules</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Informations Techniques</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Alertes</a>
+        </li>
+      </ul>
+      <form method="POST" action="{{ route('vehicules.update', $vehicule->id) }}" enctype="multipart/form-data">
      @csrf
      @method('PATCH') 
-        <div class="form-group">
-            <label for="vehicule">Vehicule</label>
-            <input type="text" name="vehicule" 
-                   value="{{ $vehicule->vehicule }}" class="form-control" id="vehicule">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="form-group" style="float:left;">
+                <label for="categorie_id">Categorie</label>
+                                <select class="form-control" name="categorie_id" id="categorie_id">
+                                <?php $selectedvalue = $vehicule->categorie_id ?>
+                                @foreach ($cat as $key => $value)
+                                <option value="{{ $value->id }}" {{ $selectedvalue == $value->id ? 'selected="selected"' : '' }}>{{ $value->categorie }}</option>
+                                @endforeach
+                                </select> 
+                </div>
+
+                <div class="form-group" style="float:right;">
+                    <label for="vehicule">Vehicule</label>
+                    <input type="text" name="vehicule" 
+                          value="{{ $vehicule->vehicule }}" class="form-control" id="vehicule">
+                </div>
+             <br/>
+        
+          
+                <div class="form-group" style="float:left;">
+                    <label for="matricule">Matricule</label>
+                    <input type="text" name="matricule" 
+                          value="{{ $vehicule->matricule }}" class="form-control" id="matricule">
+                </div>
+
+                <div class="form-group" style="float:right;">
+                    <label for="couleur">Couleur</label>
+                    <input type="text" name="couleur" 
+                          value="{{ $vehicule->couleur }}" class="form-control" id="couleur">
+                </div>
+        <br/>
+                <div class="form-group" style="float:left;">
+                                        <label for="photo">Photo</label>
+                                        <input type="file" id="photo" name='photo' />
+                                        <br>
+                                    <img src="{{ url('upload/'.$vehicule->photo) }}" class="img-thumbnail" width="100" height="100" />
+                                    <input type="hidden" name="hidden-image" value="{{ $vehicule->photo }}" />
+                                    </div>
+                            
+       
         </div>
+         
 
-        <div class="form-group">
-                                <label for="photo">Photo</label>
-                                <input type="file" id="photo" name='photo' />
-                                <br>
-                            <img src="{{ url('upload/'.$vehicule->photo) }}" class="img-thumbnail" width="100" height="100" />
-                            <input type="hidden" name="hidden-image" value="{{ $vehicule->photo }}" />
-                            </div>
-
-        <div class="form-group">
-            <label for="matricule">Matricule</label>
-            <input type="text" name="matricule" 
-                   value="{{ $vehicule->matricule }}" class="form-control" id="matricule">
-        </div>
-
-        <div class="form-group">
-            <label for="couleur">Couleur</label>
-            <input type="text" name="couleur" 
-                   value="{{ $vehicule->couleur }}" class="form-control" id="couleur">
-        </div>
-
-
-        <div class="form-group">
-        <label for="categorie_id">Categorie</label>
-                        <select class="form-control" name="categorie_id" id="categorie_id">
-                        <?php $selectedvalue = $vehicule->categorie_id ?>
-                        @foreach ($cat as $key => $value)
-                        <option value="{{ $value->id }}" {{ $selectedvalue == $value->id ? 'selected="selected"' : '' }}>{{ $value->categorie }}</option>
-                        @endforeach
-                        </select> 
-        </div>
-
-        <div class="form-group">
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        
+        <div class="form-group" style="float:left;">
         <label for="carburant">Carburant</label>
                         <select class="form-control" name="carburant" id="carburant">
                         <option value="-1">Select carburant</option>
@@ -81,7 +101,7 @@
                         </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="float:right;">
         <label for="nb_cyl">Nombre de cylindres</label>
                         <select class="form-control" name="nb_cyl" id="nb_cyl">
                         <option value="-1">Select Nombre de cylindres</option>
@@ -92,7 +112,7 @@
                         </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="float:left;">
         <label for="puissance_fiscale">Puissance fiscale</label>
                         <select class="form-control" name="puissance_fiscale" id="puissance_fiscale">
                         <option value="-1">Select puissance fiscale</option>
@@ -103,7 +123,7 @@
                         </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="float:right;">
         <label for="nb_vit">Nombre de vitesses</label>
                         <select class="form-control" name="nb_vit" id="nb_vit">
                         <option value="-1">Select Nombre de vitesses</option>
@@ -111,15 +131,14 @@
                         <option value="6" @if($vehicule->nb_vit == 6) selected="selected" @endif>6</option>
                         <option value="7" @if($vehicule->nb_vit == 7) selected="selected" @endif>7</option>
                         </select>
-        
-            <div class="form-group">
+        </div>
+            <div class="form-group" style="float:center;">
             <label for="prix">Prix</label>
-            <input type="text" name="prix" 
-                   value="{{ $vehicule->prix }}" class="form-control" id="prix">
+            <input type="text" name="prix" value="{{ $vehicule->prix }}" class="form-control" id="prix">
         </div>
 
-        </div>
-        <div class="form-group">
+        
+        <div class="form-group"  style="float:center;">
                         <label for="v_status">Status</label>
                         <select class="form-control" name="status" id="status">
                         <option value="1" @if($vehicule->status) selected="selected" @endif>Disponible</option>
@@ -132,38 +151,50 @@
             <textarea name="options" class="form-control" id="options" rows="3">{{ $vehicule->options }}</textarea>
         </div>
 
-        <div class="form-group">
-            <label for="repdate">Réparations</label>
-            <input type="date" name="repdate" 
-                   value="{{ $vehicule->repdate }}" class="form-control" id="repdate">
-            <textarea name="reparations" class="form-control" id="reparations" rows="3">{{ $vehicule->reparations }}</textarea>
-        </div>
+        
+    </div>
 
-        <div class="form-group">
+
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        
+        <div class="form-group" style="float:left;">
             <label for="visites_tech">Visites techniques</label>
             <input type="date" name="visites_tech" 
                    value="{{ $vehicule->visites_tech }}" class="form-control" id="visites_tech">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="float:right;">
             <label for="vidanges">Vidanges</label>
             <input type="date" name="vidanges" 
                    value="{{ $vehicule->vidanges }}" class="form-control" id="vidanges">
         </div>
+        <br/>
 
-        <div class="form-group">
+        <div class="form-group" style="float:left;">
             <label for="vignettes">Vignettes</label>
             <input type="date" name="vignettes" 
                    value="{{ $vehicule->vignettes }}" class="form-control" id="vignettes">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="float:right;">
             <label for="assurences">Assurences</label>
             <input type="date" name="assurences" 
                    value="{{ $vehicule->assurences }}" class="form-control" id="assurences">
         </div>
+         <br/>
+        <div class="form-group" style="float:center;" >
+            <label for="repdate">Réparations</label>
+            <input type="date" name="repdate" 
+                   value="{{ $vehicule->repdate }}" class="form-control" id="repdate">
+            <textarea name="reparations" class="form-control" id="reparations" rows="3">{{ $vehicule->reparations }}</textarea>
+        </div>
+            <br/>
         
-        <button type="submit" class="btn btn-success">Modifier</button>
+        </div>
+      </div>
+        
+
+        <button type="submit" class="btn btn-success" style="margin-top:150px; margin-left:-60px;">Modifier</button>
     </form>
 </div>
 </div>
