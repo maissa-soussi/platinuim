@@ -166,6 +166,12 @@ class VehiculeController extends Controller
         'prix' => $request->prix,
         'status' => $request->status,
         'photo' => $image_name,
+        'reparations' => $request->reparations,
+        'repdate' => $request->repdate,
+        'visites_tech' => $request->visites_tech,
+        'vidanges' => $request->vidanges,
+        'vignettes' => $request->vignettes,
+        'assurences' => $request->assurences,
         );
 
         Vehicule::whereId($id)->update($form_data);

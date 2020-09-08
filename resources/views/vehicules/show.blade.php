@@ -53,17 +53,16 @@
        <p>Sous location</p>
        @endif
        <h3>Alertes</h3>
-       <p>{{ $vehicule->alertes }}</p>
-       <h3>Reparations</h3>
-       <p>{{ $vehicule->reparations }}</p>
-       <h3>Visites techniques</h3>
-       <p>{{ $vehicule->visites_tech }}</p>
-       <h3>Vidanges</h3>
-       <p>{{ $vehicule->vidanges }}</p>
-       <h3>Vignettes</h3>
-       <p>{{ $vehicule->vignettes }}</p>
-       <h3>Assurance</h3>
-       <p>{{ $vehicule->assurences }}</p>
+       <h5> Reparations</h5>
+       <p> {{ $vehicule->repdate }} {{ $vehicule->reparations }}</p>
+       <h5> Visites techniques</h5>
+       <p> {{ $vehicule->visites_tech }}</p>
+       <h5> Vidanges</h5>
+       <p> {{ $vehicule->vidanges }}</p>
+       <h5> Vignettes</h5>
+       <p> {{ $vehicule->vignettes }}</p>
+       <h5> Assurance</h5>
+       <p> {{ $vehicule->assurences }}</p>
        
     </div>
     

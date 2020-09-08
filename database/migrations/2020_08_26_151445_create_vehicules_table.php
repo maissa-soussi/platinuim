@@ -25,12 +25,12 @@ class CreateVehiculesTable extends Migration
             $table->string("couleur",255)->nullable();
             $table->string("options")->nullable();
             $table->double("prix")->nullable();
-            $table->string("alertes")->nullable();
             $table->string("reparations")->nullable();
-            $table->string("visites_tech")->nullable();
-            $table->string("vidanges")->nullable();
-            $table->string("vignettes")->nullable();
-            $table->string("assurences")->nullable();
+            $table->date("repdate")->nullable();
+            $table->date("visites_tech")->nullable();
+            $table->date("vidanges")->nullable();
+            $table->date("vignettes")->nullable();
+            $table->date("assurences")->nullable();
             $table->string("photo")->nullable();
             $table->integer("status")->default(1);
             $table->timestamps();

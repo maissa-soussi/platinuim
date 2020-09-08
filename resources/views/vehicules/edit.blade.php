@@ -131,6 +131,37 @@
             <label for="options">Option</label>
             <textarea name="options" class="form-control" id="options" rows="3">{{ $vehicule->options }}</textarea>
         </div>
+
+        <div class="form-group">
+            <label for="repdate">Réparations</label>
+            <input type="date" name="repdate" 
+                   value="{{ $vehicule->repdate }}" class="form-control" id="repdate">
+            <textarea name="reparations" class="form-control" id="reparations" rows="3">{{ $vehicule->reparations }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="visites_tech">Visites techniques</label>
+            <input type="date" name="visites_tech" 
+                   value="{{ $vehicule->visites_tech }}" class="form-control" id="visites_tech">
+        </div>
+
+        <div class="form-group">
+            <label for="vidanges">Vidanges</label>
+            <input type="date" name="vidanges" 
+                   value="{{ $vehicule->vidanges }}" class="form-control" id="vidanges">
+        </div>
+
+        <div class="form-group">
+            <label for="vignettes">Vignettes</label>
+            <input type="date" name="vignettes" 
+                   value="{{ $vehicule->vignettes }}" class="form-control" id="vignettes">
+        </div>
+
+        <div class="form-group">
+            <label for="assurences">Assurences</label>
+            <input type="date" name="assurences" 
+                   value="{{ $vehicule->assurences }}" class="form-control" id="assurences">
+        </div>
         
         <button type="submit" class="btn btn-success">Modifier</button>
     </form>
