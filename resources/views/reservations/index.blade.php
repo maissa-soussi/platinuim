@@ -5,15 +5,7 @@
 @section("content")
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    <br><br>
 
     <!-- Main content -->
     <section class="content">
@@ -103,7 +95,7 @@
                        <br/> 
                         <table class="card-text" width="500px">
                                 <tr>
-                                  <td><label>Mr/Mme: {{ $client->nom }}</label></td>
+                                  <td><label>Mr/Mme: maissa soussi</label></td>
                                   <td><label>Cin: 12365478</label></td>
                                 </tr>
                                 <tr>

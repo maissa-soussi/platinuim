@@ -15,7 +15,7 @@
       <th scope="col">Nom & Prénom</th>
       <th scope="col">Mail </th>
       <th scope="col">Poste</th>
-      <th scope="col">#</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +24,7 @@
       <td>{{ $user->name }}</td>
       <td>{{ $user->email }}</td>
       <td>{{ $user->role }}</td>
-      <td>
+      <td class="table-buttons">
       <a href="" class="btn">
          <i class="fas fa-pencil-alt" style="color:green;"></i>
        </a>
