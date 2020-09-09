@@ -25,17 +25,18 @@
       <td>{{ $user->email }}</td>
       <td>{{ $user->role }}</td>
       <td class="table-buttons">
-      <a href="" class="btn">
-         <i class="fas fa-pencil-alt" style="color:green;"></i>
+       
+       <a href="{{ route('users.edit', $user) }}" class="btn btn-primary">
+         <i class="fas fa-pencil-alt" ></i>
        </a>
-       <form method="POST" action="">
+       <form method="POST" action="{{ route('users.destroy', $user) }}">
         @csrf
         @method('DELETE')
-           <button type="submit" class="btn">
-             <i class="fa fa-trash" style="color:red;"></i>
+           <button type="submit" class="btn btn-danger">
+             <i class="fa fa-trash"></i>
            </button>
        </form>
-      </td>
+     </td>
     </tr>
     @endforeach
     </tbody>
@@ -45,7 +46,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <h3> Ajouter un nouveau admin</h3>
-                <form method="POST" action="/register" style="width:70%; margin-left:15%;">
+                <form method="POST" action="{{ route('users.store') }}" style="width:70%; margin-left:15%;">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name">Name:</label>

@@ -186,14 +186,13 @@
         </div>
       </div>
         
-      
+      <br>
+<button type="submit" class="btn btn-success" style="float:center; margin-left:570px;">Modifier</button>
         
         
     </form>
 </div>
 </div>
-<br>
-<button type="submit" class="btn btn-success" style="float:center; margin-left:570px;">Modifier</button>
 
     </section>
     <!-- /.content -->

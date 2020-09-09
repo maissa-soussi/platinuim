@@ -17,7 +17,7 @@ class UsersController extends Controller
     {
         $users = User::all()->sortBy('name');;
         
-        return view('register', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     public function store()
@@ -33,14 +33,41 @@ class UsersController extends Controller
         
         auth()->login($user);
         
-        return redirect()->to('users');
+        return redirect('/users')->with('success', 'Ajout avec succes!');
     }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = $request->get('password');
+        $user->role = $request->get('role');
+        $user->save();
+
+        return redirect('/users')->with('success', 'Modification avec succes!');
+    }
+
     public function destroy($id)
     {
-        $client = User::find($id);
-        $client->delete();
+        $user = User::find($id);
+        $user->delete();
 
-        return redirect('/register');
+        return redirect('/users')->with('success', 'Admin supprimé!');
     }
     
      

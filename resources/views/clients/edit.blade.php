@@ -82,10 +82,12 @@
                         <option value="0" @if(!$client->status) selected="selected" @endif>Liste noire</option>
                         </select>
                       </div>
+                      </div><br><br>
+                      <button type="submit" class="btn btn-success" style="float:center; margin-left:570px;">Modifier</button>
+
     </form>
 </div>
-</div><br><br>
-<button type="submit" class="btn btn-success" style="float:center; margin-left:570px;">Modifier</button>
+
     </section>
     <!-- /.content -->
   </div>

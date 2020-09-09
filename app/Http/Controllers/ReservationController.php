@@ -38,14 +38,6 @@ class ReservationController extends Controller
         return view('reservations.show', ['vehicule' => $vehicule, 'client' => $client, 'reservation' => $reservation]);
     }
 
-    public function contrat($id)
-    {
-        $reservation = Reservation::find($id);
-        $vehicule = DB::table('vehicules')->where(['matricule'=>$reservation->imma_v])->first();
-        $client = DB::table('clients')->where(['cin'=>$reservation->cinclient])->first();
-        return view('reservations.show', ['vehicule' => $vehicule, 'client' => $client, 'reservation' => $reservation]);
-    }
-
     public function planning()
     {   
         $reservations = Reservation::all();
