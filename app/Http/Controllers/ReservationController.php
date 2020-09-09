@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reservation;
+use App\Client;
+use App\Vehicule;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
@@ -28,9 +30,20 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function show($id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $vehicule = DB::table('vehicules')->where(['matricule'=>$reservation->imma_v])->first();
+        $client = DB::table('clients')->where(['cin'=>$reservation->cinclient])->first();
+        return view('reservations.show', ['vehicule' => $vehicule, 'client' => $client, 'reservation' => $reservation]);
+    }
+
+    public function contrat($id)
+    {
+        $reservation = Reservation::find($id);
+        $vehicule = DB::table('vehicules')->where(['matricule'=>$reservation->imma_v])->first();
+        $client = DB::table('clients')->where(['cin'=>$reservation->cinclient])->first();
+        return view('reservations.show', ['vehicule' => $vehicule, 'client' => $client, 'reservation' => $reservation]);
     }
 
     public function planning()
@@ -108,17 +121,6 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function contrat($id)
-    {
-        $reservation = Reservation::find($id);
-        $imma=$reservation->imma_v;
-        $cinc=$reservation->cinclient;
-        $vehicule = Vehicule::find($imma);
-        $client = Client::find($cinc);
-        
-
-        return view('reservations.edit',['reservation' => $reservation, 'vehicule' => $vehicule, 'client' => $client]);
-    }
 
     /**
      * Show the form for editing the specified resource.

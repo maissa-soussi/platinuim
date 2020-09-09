@@ -64,7 +64,7 @@
                     <input type="text" name="vehicule" 
                           value="{{ $vehicule->vehicule }}" class="form-control" id="vehicule">
                 </div>
-             <br/>
+             <br/><br/><br><br>
         
           
                 <div class="form-group" style="float:left;">
@@ -78,8 +78,8 @@
                     <input type="text" name="couleur" 
                           value="{{ $vehicule->couleur }}" class="form-control" id="couleur">
                 </div>
-        <br/>
-                <div class="form-group" style="float:left;">
+        <br/><br/><br><br><br>
+                <div class="form-group" style="margin-left:200px;">
                                         <label for="photo">Photo</label>
                                         <input type="file" id="photo" name='photo' />
                                         <br>
@@ -138,7 +138,7 @@
             <input type="text" name="prix" value="{{ $vehicule->prix }}" class="form-control" id="prix">
         </div>
 
-        
+        <br><br><br><br><br><br><br><br><br><br><br>
         <div class="form-group">
             <label for="options">Option</label>
             <textarea name="options" class="form-control" id="options" rows="3">{{ $vehicule->options }}</textarea>
@@ -161,7 +161,7 @@
             <input type="date" name="vidanges" 
                    value="{{ $vehicule->vidanges }}" class="form-control" id="vidanges">
         </div>
-        <br/>
+        <br/><br/><br><br>
 
         <div class="form-group" style="float:left;">
             <label for="vignettes">Vignettes</label>
@@ -174,7 +174,7 @@
             <input type="date" name="assurences" 
                    value="{{ $vehicule->assurences }}" class="form-control" id="assurences">
         </div>
-         <br/> <br/> <br/> <br/> <br/> <br/> 
+         <br/><br/><br/><br><br>
         <div class="form-group" style="float:center;" >
             <label for="repdate">Réparations</label>
             <input type="date" name="repdate" 
@@ -187,12 +187,14 @@
       </div>
         
       
-        <button type="submit" class="btn btn-success" style="margin-top:150px; margin-left:-60px;">Modifier</button>
+        
         
     </form>
 </div>
 </div>
-    
+<br>
+<button type="submit" class="btn btn-success" style="float:center; margin-left:570px;">Modifier</button>
+
     </section>
     <!-- /.content -->
   </div>

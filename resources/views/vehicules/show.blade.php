@@ -58,15 +58,14 @@
                                 
                                 </select> 
                 </div>
-
+                
                 <div class="form-group" style="float:right;">
                     <label for="vehicule">Vehicule</label>
                     <input type="text" name="vehicule" 
                           value="{{ $vehicule->vehicule }}" class="form-control" id="vehicule" disabled>
                 </div>
-             <br/>
+                <br/><br><br><br>
         
-          
                 <div class="form-group" style="float:left;">
                     <label for="matricule">Matricule</label>
                     <input type="text" name="matricule" 
@@ -78,8 +77,8 @@
                     <input type="text" name="couleur" 
                           value="{{ $vehicule->couleur }}" class="form-control" id="couleur" disabled>
                 </div>
-        <br/>
-                <div class="form-group" style="float:left;">
+        <br/><br><br><br><br>
+                <div class="form-group" style="margin-left:200px;">
                                         <label for="photo">Photo</label>
                                         <input type="file" id="photo" name='photo' disabled/>
                                         <br>
@@ -138,7 +137,7 @@
             <input type="text" name="prix" value="{{ $vehicule->prix }}" class="form-control" id="prix" disabled>
         </div>
 
-        
+        <br><br><br><br><br><br><br><br><br><br><br>
         <div class="form-group">
             <label for="options">Option</label>
             <textarea name="options" class="form-control" id="options" rows="3" disabled>{{ $vehicule->options }}</textarea>
@@ -161,7 +160,7 @@
             <input type="date" name="vidanges" 
                    value="{{ $vehicule->vidanges }}" class="form-control" id="vidanges" disabled>
         </div>
-        <br/>
+        <br/><br/><br><br>
 
         <div class="form-group" style="float:left;">
             <label for="vignettes">Vignettes</label>
@@ -174,7 +173,7 @@
             <input type="date" name="assurences" 
                    value="{{ $vehicule->assurences }}" class="form-control" id="assurences" disabled>
         </div>
-         <br/> <br/> <br/> <br/> <br/> <br/> 
+         <br/> <br/><br><br><br>
         <div class="form-group" style="float:center;" >
             <label for="repdate">Réparations</label>
             <input type="date" name="repdate" 
@@ -189,7 +188,8 @@
     </form>
 </div>
 </div>
-<a href="{{ route('vehicules.edit', $vehicule) }}" class="btn btn-primary">modifier</a>
+<br>
+<a href="{{ route('vehicules.edit', $vehicule) }}" class="btn btn-success" style="float:center; margin-left:570px;">modifier</a>
     </section>
     <!-- /.content -->
   </div>

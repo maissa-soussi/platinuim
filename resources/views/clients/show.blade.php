@@ -45,7 +45,7 @@
             <input type="text" name="cin" 
                    value="{{ $client->cin }}" class="form-control" id="cin" disabled>
         </div>
-
+        <br/><br/><br><br>
         <div class="form-group" style="float:left;">
             <label for="num_permis">Num permis</label>
             <input type="text" name="num_permis" 
@@ -56,7 +56,7 @@
             <label for="phone_nb">Tel</label>
             <input type="text" name="phone_nb" value="{{ $client->phone_nb }}" class="form-control" id="phone_nb" disabled>
         </div>
-          <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+          <br/><br/><br/><br>
         <div class="form-group">
             <label for="email">Email</label>
             <input type="text" name="email" 
@@ -83,12 +83,10 @@
                         </select>
                       </div>
                       <br><br><br><br><br>
-                      <a href="{{ route('clients.edit', $client) }}" class="btn btn-primary">
-         modifier
-       </a>
-    </form>
+
 </div>
 </div>
+<a href="{{ route('clients.edit', $client) }}" class="btn btn-success" style="float:center; margin-left:570px;">modifier</a></form>
     </section>
     <!-- /.content -->
   </div>

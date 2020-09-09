@@ -73,7 +73,7 @@
                         <option value="1" @if($reservation->recuperation) selected="selected" @endif>récuperé</option>
                         </select>
         </div>
-        <button type="submit" class="btn btn-success">Modifier</button>
+        <button type="submit" class="btn btn-success" style="float:center; margin-left:230px;">Modifier</button>
     </form>
 </div>
 </div>
