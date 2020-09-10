@@ -161,6 +161,19 @@ class ReservationController extends Controller
             "date_fin"=>"required",
             "paiement"=>"required|not_in:-1",
         ]);
+
+        $souslocation = DB::table('reservations')
+         ->where('imma_v', 'like', '%'.$request->get('imma_v').'%')
+         ->whereBetween('reservations.date_deb', [$request->get('date_deb'),$request->get('date_fin')])
+         ->orwhereBetween('reservations.date_fin', [$request->get('date_deb'),$request->get('date_fin')])
+         ->orwhere('date_deb', '>', '%'.$request->get('date_deb').'%' &&  'date_fin', '<', '%'.$request->get('date_fin').'%')
+         ->count();
+         if($souslocation > 0){
+            return redirect('planning')->with('success', 'vehicule non disponible!');
+
+         }
+         else{
+
         $imma=$request->get('imma_v');
         $cinc=$request->get('cinclient');
         $vehicules = DB::table('vehicules')->where(['matricule'=>$imma])->first();
@@ -201,6 +214,7 @@ class ReservationController extends Controller
         $reservation->save();
         //Mail::to($clients->email)->send(new SendMail($data));
         return redirect('planning')->with('success', 'Ajout avec succes!');
+    }
     }
 
     /**
