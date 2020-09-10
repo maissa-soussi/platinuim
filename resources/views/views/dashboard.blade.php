@@ -27,7 +27,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Véhicules</span>
-                <span class="info-box-number">{{ $vehicules }}</span>
+                <span class="info-box-number">{{ $data['vehicules'] }}</span>
                 <a href="{{ route('vehicules.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>              
               <!-- /.info-box-content -->
@@ -42,7 +42,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Clients</span>
-                <span class="info-box-number">{{ $clients }}</span>
+                <span class="info-box-number">{{ $data['clients'] }}</span>
                 <a href="{{ route('clients.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
               <!-- /.info-box-content -->
@@ -57,7 +57,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Réservations</span>
-                <span class="info-box-number">{{ $reservations }}</span>
+                <span class="info-box-number">{{ $data['reservations'] }}</span>
                 <a href="{{ route('reservations.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
               <!-- /.info-box-content -->
@@ -71,7 +71,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Véhicules sous location</span>
-                <span class="info-box-number">{{ $souslocation }}</span>
+                <span class="info-box-number">{{ $data['souslocation'] }}</span>
                 <a href="{{ route('vehicules.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
               <!-- /.info-box-content -->
@@ -79,7 +79,34 @@
             <!-- /.info-box -->
           </div>
           
-          <!-- ./col -->
+         
+          <div class="col-md-6 col-sm-6 col-12">
+          <div class="alert alert-danger">Alertes</div>
+            <div class="info-box">
+               <ul>
+               @foreach($assurences as $assurence)
+               <li>{{ $assurence->vehicule }} ( {{ $assurence->matricule }} ) {{ $assurence->assurences }} assurence</li>
+               @endforeach
+               
+               @foreach($vidanges as $vidange)
+               <li>{{ $vidange->vehicule }} ( {{ $vidange->matricule }} ) {{ $vidange->vidanges }} vidange</li>
+               @endforeach
+               
+               @foreach($vignettes as $vignette)
+               <li>{{ $vignette->vehicule }} ( {{ $vignette->matricule }} ) {{ $vignette->vignettes }} vignette</li>
+               @endforeach
+               
+               @foreach($visites as $visite)
+               <li>{{ $visite->vehicule }} ( {{ $visite->matricule }} ) {{ $visite->visites_tech }} visite</li>
+               @endforeach
+               
+               @foreach($reparations as $reparation)
+               <li>{{ $reparation->vehicule }} ( {{ $reparation->matricule }} ) {{ $reparation->repdate }} : {{ $reparation->reparations }} reparation</li>
+               @endforeach
+               </ul>
+            </div>
+          </div>
+            
         </div>
         <!-- /.row -->
         
