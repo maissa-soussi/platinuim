@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use DB;
 
 class UsersController extends Controller
 {
@@ -15,9 +16,31 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all()->sortBy('name');;
+        $users = User::all()->sortBy('name');
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
+
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
         
-        return view('users.index', compact('users'));
+        return view('users.index', ['users' => $users, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     public function store()
@@ -39,8 +62,30 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('users.edit', compact('user'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('users.edit', ['user' => $user, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     public function update(Request $request, $id)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
+use DB;
 
 class ClientController extends Controller
 {
@@ -15,8 +16,30 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all()->sortBy('nom');
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('clients.index', compact('clients'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('clients.index', ['clients' => $clients, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**
@@ -71,8 +94,30 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::find($id);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('clients.show', compact('client'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('clients.show', ['client' => $client, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**
@@ -84,8 +129,30 @@ class ClientController extends Controller
     public function edit($id)
     {
         $client = Client::find($id);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('clients.edit', compact('client'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('clients.edit', ['client' => $client, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**

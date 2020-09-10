@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categorie;
 use Illuminate\Http\Request;
+use DB;
 
 class CategorieController extends Controller
 {
@@ -15,8 +16,30 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('categories.index', compact('categories'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('categories.index', ['categories' => $categories, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**
@@ -60,8 +83,30 @@ class CategorieController extends Controller
     public function show($id)
     {
         $categorie = Categorie::find($id);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('categories.show', compact('categorie'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('categories.show', ['categorie' => $categorie, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**
@@ -70,12 +115,7 @@ class CategorieController extends Controller
      * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $categorie = Categorie::find($id);
-
-        return view('categories.edit', compact('categorie'));
-    }
+    
 
     /**
      * Update the specified resource in storage.

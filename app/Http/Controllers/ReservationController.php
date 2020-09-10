@@ -20,8 +20,30 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::all()->sortByDesc('updated_at');
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('reservations.index', compact('reservations'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('reservations.index',  ['reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
 
     }
 
@@ -35,20 +57,86 @@ class ReservationController extends Controller
         $reservation = Reservation::find($id);
         $vehicule = DB::table('vehicules')->where(['matricule'=>$reservation->imma_v])->first();
         $client = DB::table('clients')->where(['cin'=>$reservation->cinclient])->first();
-        return view('reservations.show', ['vehicule' => $vehicule, 'client' => $client, 'reservation' => $reservation]);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
+
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+        return view('reservations.show', ['vehicule' => $vehicule, 'client' => $client, 'reservation' => $reservation, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     public function planning()
     {   
         $reservations = Reservation::all();
-        return view('reservations.planning', compact('reservations'));
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
+
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+        return view('reservations.planning',  ['reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     public function search(Request $request){
         $search = $request->get('search');
         $reservations = DB::table('reservations')->where('imma_v', 'like', '%'.$search.'%');
         $reservations = $reservations->get();
-        return view('reservations.planning', ['reservations' => $reservations]);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
+
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+        return view('reservations.planning', ['reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
     /**
      * Store a newly created resource in storage.
@@ -123,8 +211,30 @@ class ReservationController extends Controller
     public function edit($id)
     {
         $reservation = Reservation::find($id);
+        $now = date('Y-m-d');
+        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
+        $assurences = $assurences->get();
+        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
+        $vidanges = $vidanges->get();
+        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
+        $vignettes = $vignettes->get();
+        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
+        $visites = $visites->get();
+        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
+        $reparations = $reparations->get();
 
-        return view('reservations.edit', compact('reservation'));
+        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
+        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
+        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
+        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
+        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
+        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
+        $data = array(
+            'nbnotif' => $nbnotif,
+
+        );
+
+        return view('reservations.edit',  ['reservation' => $reservation, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**

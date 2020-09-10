@@ -17,27 +17,45 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge">{{ $data['nbnotif'] }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">{{ $data['nbnotif'] }} Notifications</span>
+          @foreach($assurences as $assurence)
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            {{ $assurence->vehicule }} ( {{ $assurence->matricule }} )
+            <span class="float-right text-muted text-sm">assurence</span>
           </a>
+          @endforeach
+          @foreach($vidanges as $vidange)
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
+          {{ $vidange->vehicule }} ( {{ $vidange->matricule }} )
+            <span class="float-right text-muted text-sm">vidange</span>
           </a>
+          @endforeach
+          @foreach($vignettes as $vignette)
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
+          {{ $vignette->vehicule }} ( {{ $vignette->matricule }} )
+            <span class="float-right text-muted text-sm">vignette</span>
           </a>
+          @endforeach
+          @foreach($visites as $visite)
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item">
+          {{ $visite->vehicule }} ( {{ $visite->matricule }} )
+            <span class="float-right text-muted text-sm">visite</span>
+          </a>
+          @endforeach
+          @foreach($reparations as $reparation)
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+          {{ $reparation->vehicule }} ( {{ $reparation->matricule }} ) : {{ $reparation->reparations }}
+            <span class="float-right text-muted text-sm">reparation</span>
+          </a>
+          @endforeach
         </div>
       </li>
 
