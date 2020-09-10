@@ -9,6 +9,7 @@ use App\Vehicule;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -85,6 +86,13 @@ class ReservationController extends Controller
     public function planning()
     {   
         $reservations = Reservation::all();
+        foreach($reservations as $reservation){
+        $reservation->date_fin = Carbon::parse($reservation->date_fin)->addDays(1);
+        $reservation->date_fin = Carbon::parse($reservation->date_fin)->format('Y-m-d');
+         }
+        $fin = $reservations->get('date_fin');
+        $fin = Carbon::parse($fin)->addDays(1);
+        $fin = Carbon::parse($fin)->format('Y-m-d');
         $now = date('Y-m-d');
         $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
         $assurences = $assurences->get();
