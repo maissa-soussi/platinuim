@@ -106,7 +106,13 @@
                </ul>
             </div>
           </div>
-            
+          <div class="col-md-6 col-sm-6 col-12">
+          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-12">
+          <div id="charts" style="height: 370px; width: 100%;"></div>
+          </div>
         </div>
         <!-- /.row -->
         
@@ -117,3 +123,23 @@
   <!-- /.content-wrapper -->
 
 @endsection
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	title: {
+		text: "Nombre de reservations par jours"
+	},
+	axisY: {
+		title: "Nombre de reservations"
+	},
+	data: [{
+		type: "line",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
