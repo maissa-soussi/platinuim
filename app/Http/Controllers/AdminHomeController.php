@@ -13,10 +13,10 @@ class AdminHomeController extends Controller
 {
     public function dashboard() {
         $vehicules = Vehicule::count();
-        $souslocation = DB::table('reservations')->where('recuperation', 'like', 0)->count();
+        $now = date('Y-m-d');
+        $souslocation = DB::table('reservations')->where('recuperation', 'like', 0)->where('date_deb', '<=', $now)->count();
         $clients = Client::count();
         $reservations = Reservation::count();
-        $now = date('Y-m-d');
         $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
         $assurences = $assurences->get();
         $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
@@ -34,7 +34,10 @@ class AdminHomeController extends Controller
         $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
         $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
         $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
-
+        $recup = DB::table('reservations')->select('vehicules.*')
+        ->join('vehicules', 'vehicules.matricule', '=', 'reservations.imma_v')
+        ->where('reservations.date_fin', '=', $now)->get();
+         
         $data = array(
             'vehicules' => $vehicules,
             'clients' => $clients,
@@ -66,7 +69,58 @@ class AdminHomeController extends Controller
             array("y" => $resf, "label" => $f),
             array("y" => $resg, "label" => $g)
         );
-        return view('views.dashboard', ['dataPoints' => $dataPoints, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
+        $h = Carbon::parse($now)->subDays(6)->format('Y-m-d');
+        $i = Carbon::parse($now)->subDays(5)->format('Y-m-d');
+        $j = Carbon::parse($now)->subDays(4)->format('Y-m-d');
+        $k = Carbon::parse($now)->subDays(3)->format('Y-m-d');
+        $l = Carbon::parse($now)->subDays(2)->format('Y-m-d');
+        $m = Carbon::parse($now)->subDays(1)->format('Y-m-d');
+        $resn = DB::table('reservations')->where('reservations.date_deb', '=', $now)->get();
+        $countn = 0;
+        foreach($resn as $resn){
+            $countn = $countn + $resn->montant;
+        }
+        $resh = DB::table('reservations')->where('reservations.date_deb', '=', $h)->get();
+        $counth = 0;
+        foreach($resh as $resh){
+            $counth = $counth + $resh->montant;
+        }
+        $resi = DB::table('reservations')->where('reservations.date_deb', '=', $i)->get();
+        $counti = 0;
+        foreach($resi as $resi){
+            $counti = $counti + $resi->montant;
+        }
+        $resj = DB::table('reservations')->where('reservations.date_deb', '=', $j)->get();
+        $countj = 0;
+        foreach($resj as $resj){
+            $countj = $countj + $resj->montant;
+        }
+        $resk = DB::table('reservations')->where('reservations.date_deb', '=', $k)->get();
+        $countk = 0;
+        foreach($resk as $resk){
+            $countk = $countk + $resk->montant;
+        }
+        $resl = DB::table('reservations')->where('reservations.date_deb', '=', $l)->get();
+        $countl = 0;
+        foreach($resl as $resl){
+            $countl = $countl + $resl->montant;
+        }
+        $resm = DB::table('reservations')->where('reservations.date_deb', '=', $m)->get();
+        $countm = 0;
+        foreach($resm as $resm){
+            $countm = $countm + $resm->montant;
+        }
+
+        $Points = array( 
+            array("y" => $counth, "label" => $h ),
+            array("y" => $counti, "label" => $i ),
+            array("y" => $countj, "label" => $j ),
+            array("y" => $countk, "label" => $k ),
+            array("y" => $countl, "label" => $l ),
+            array("y" => $countm, "label" => $m ),
+            array("y" => $countn, "label" => $now )
+        );
+        return view('views.dashboard', ['recup' => $recup, 'Points' => $Points, 'dataPoints' => $dataPoints, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
 
     }
 }

@@ -19,7 +19,7 @@ Route::get('/', function () {
 // login route 
 Route::post('/login',"LoginController@login");
 // register routes 
-Route::resource('users', 'UsersController');
+Route::resource('users', 'UserController');
 // routes
 Route::get("/dashboard", "AdminHomeController@dashboard")->name('dashboard') ;
 Route::resource('categories', 'CategorieController');
@@ -28,5 +28,6 @@ Route::resource('clients', 'ClientController');
 Route::resource('reservations', 'ReservationController');
 Route::get("/planning", "ReservationController@planning")->name('planning') ;
 Route::get("/search", "ReservationController@search") ;
+
 
 

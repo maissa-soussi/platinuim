@@ -23,7 +23,7 @@
         <div class="row">
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-info"><i class="fas fa-car"></i></span>
+              <span class="info-box-icon bg-warning"><i class="fas fa-car" style="color: white;"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Véhicules</span>
@@ -81,38 +81,28 @@
           
          
           <div class="col-md-6 col-sm-6 col-12">
-          <div class="alert alert-danger">Alertes</div>
             <div class="info-box">
-               <ul>
-               @foreach($assurences as $assurence)
-               <li>{{ $assurence->vehicule }} ( {{ $assurence->matricule }} ) {{ $assurence->assurences }} assurence</li>
-               @endforeach
-               
-               @foreach($vidanges as $vidange)
-               <li>{{ $vidange->vehicule }} ( {{ $vidange->matricule }} ) {{ $vidange->vidanges }} vidange</li>
-               @endforeach
-               
-               @foreach($vignettes as $vignette)
-               <li>{{ $vignette->vehicule }} ( {{ $vignette->matricule }} ) {{ $vignette->vignettes }} vignette</li>
-               @endforeach
-               
-               @foreach($visites as $visite)
-               <li>{{ $visite->vehicule }} ( {{ $visite->matricule }} ) {{ $visite->visites_tech }} visite</li>
-               @endforeach
-               
-               @foreach($reparations as $reparation)
-               <li>{{ $reparation->vehicule }} ( {{ $reparation->matricule }} ) {{ $reparation->repdate }} : {{ $reparation->reparations }} reparation</li>
-               @endforeach
-               </ul>
+            <div id="chartContainer" style="height: 250px; width: 90%;"></div>
             </div>
-          </div>
-          <div class="col-md-6 col-sm-6 col-12">
-          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
           </div>
 
           <div class="col-md-6 col-sm-6 col-12">
-          <div id="charts" style="height: 370px; width: 100%;"></div>
+            <div class="info-box">
+            <div id="graph" style="height: 250px; width: 90%;"></div>
+            </div>
           </div>
+
+          <div class="col-md-6 col-sm-6 col-12">
+          <div class="alert alert-danger">Véhicules à récuperer</div>
+            <div class="info-box">
+            <ul>
+            @foreach($recup as $recup)
+            <li>{{ $recup->vehicule }} ( {{ $recup->matricule }} )</li>
+            @endforeach
+            </ul>
+            </div>
+          </div>
+          
         </div>
         <!-- /.row -->
         
@@ -138,7 +128,23 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
 	}]
 });
+var char = new CanvasJS.Chart("graph", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Recettes par jours"
+	},
+	axisY: {
+		title: "recettes en (dt)"
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,##0.## tonnes",
+		dataPoints: <?php echo json_encode($Points, JSON_NUMERIC_CHECK); ?>
+	}]
+});
 chart.render();
+char.render();
  
 }
 </script>

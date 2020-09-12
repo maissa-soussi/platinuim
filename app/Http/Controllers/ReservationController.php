@@ -164,9 +164,7 @@ class ReservationController extends Controller
 
         $souslocation = DB::table('reservations')
          ->where('imma_v', 'like', '%'.$request->get('imma_v').'%')
-         ->where('date_deb', '<', $request->get('date_deb'))
-         ->where('date_fin', '>', $request->get('date_fin'))
-         ->orwhereBetween('reservations.date_deb', [$request->get('date_deb'),$request->get('date_fin')])
+         ->whereBetween('reservations.date_deb', [$request->get('date_deb'),$request->get('date_fin')])
          ->orwhereBetween('reservations.date_fin', [$request->get('date_deb'),$request->get('date_fin')])
          ->count();
          if($souslocation > 0){
