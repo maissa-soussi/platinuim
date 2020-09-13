@@ -63,8 +63,7 @@
         <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="fas fa-cog"></i> Paramètres <sub><i class="fas fa-angle-down"></i></sub>          
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <div class="dropdown-divider"></div>
+        <div class="dropdown-menu dropdown-menu-right">
           <a href="{{ route('categories.index') }}" class="dropdown-item" >
           <i class="fas fa-clipboard-list mr-2"></i></i> Catégories
           </a>

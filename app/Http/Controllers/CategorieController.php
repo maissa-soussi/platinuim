@@ -82,31 +82,7 @@ class CategorieController extends Controller
      */
     public function show($id)
     {
-        $categorie = Categorie::find($id);
-        $now = date('Y-m-d');
-        $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
-        $assurences = $assurences->get();
-        $vidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%');
-        $vidanges = $vidanges->get();
-        $vignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%');
-        $vignettes = $vignettes->get();
-        $visites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%');
-        $visites = $visites->get();
-        $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
-        $reparations = $reparations->get();
-
-        $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
-        $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
-        $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
-        $nbvisites = DB::table('vehicules')->where('visites_tech', 'like', '%'.$now.'%')->count();
-        $nbreparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%')->count();
-        $nbnotif = $nbassurences + $nbvidanges + $nbvignettes + $nbvisites + $nbreparations;
-        $data = array(
-            'nbnotif' => $nbnotif,
-
-        );
-
-        return view('categories.show', ['categorie' => $categorie, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
+        //
     }
 
     /**
@@ -126,15 +102,7 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'categorie'=> 'required|max:255',
-        ]);
-
-        $categorie = Categorie::find($id);
-        $categorie->categorie = $request->get('categorie');
-        $categorie->save();
-
-        return redirect('/categories')->with('success', 'Modification avec succes!');
+       //
     }
 
     /**
