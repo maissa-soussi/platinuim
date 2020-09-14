@@ -41,13 +41,11 @@
 <script>
 $(document).ready( function () {
     $('#clienttable').DataTable();
-} );
-</script>
-<script>
-$(document).ready( function () {
     $('#vehiculetable').DataTable();
+    //code...
 } );
 </script>
+
 
 
 

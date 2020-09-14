@@ -80,10 +80,11 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <a class="nav-link" href="{{ route('logout') }}">
           <i class="fas fa-sign-out-alt"></i> Déconnexion
         </a>
       </li>
+      <a href="{{ route('logout') }}">loggg</a>
     </ul>
   </nav>
   <!-- /.navbar -->

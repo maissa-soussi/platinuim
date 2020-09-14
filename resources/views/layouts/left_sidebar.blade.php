@@ -16,7 +16,7 @@
           <img src="{!! asset('assets/profile.png') !!}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"> Pätrick</a>
+          <a href="#" class="d-block"> {{session('connected_user')}}</a>
         </div>
       </div>
 

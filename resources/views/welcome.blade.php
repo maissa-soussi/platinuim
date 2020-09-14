@@ -29,7 +29,15 @@
                 <input type="text" name="login" placeholder="Pseudo" /> 
                 <input type="password" name="mdp" placeholder="Mot de passe" />
                 <button>Se connecter</button>
-            
+                @isset($error)
+                <div class="alert alert-danger mt-3">
+                    {{ $error }}  
+                </div>
+                {{request()->session()->forget('error')}}
+                <?php 
+                    // $request->session()->forget('error');
+                ?>
+                @endisset
         </div>
     </article>
 </body>
