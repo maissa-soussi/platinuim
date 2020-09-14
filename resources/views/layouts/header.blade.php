@@ -84,7 +84,7 @@
           <i class="fas fa-sign-out-alt"></i> Déconnexion
         </a>
       </li>
-      <a href="{{ route('logout') }}">loggg</a>
+     
     </ul>
   </nav>
   <!-- /.navbar -->

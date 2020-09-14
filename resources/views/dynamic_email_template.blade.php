@@ -1,5 +1,4 @@
 <p>Contrat de Location de voiture</p>
-<p>Réf: {{ $data['id'] }}</p>
 <p>Montant: {{ $data['montant'] }}</p>
 <p>De: {{ $data['date_deb'] }}</p>
 <p>à: {{ $data['date_fin'] }}</p>

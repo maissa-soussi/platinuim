@@ -24,9 +24,9 @@
 
     <!-- Main content -->
     <section class="content">
-            <table style="text-align:center">
+            <table style="text-align:center;">
             <tr>
-            <td><img src="dist/img/logo.jpg" alt="Logo" width="110" height="110"></td>
+            <td><img src="{!! asset('dist/img/logo.jpg') !!}" alt="Logo" width="110" height="110"></td>
             <td><h3>Contrat de Location de voiture</h3></td>
             </tr>
             </table>
