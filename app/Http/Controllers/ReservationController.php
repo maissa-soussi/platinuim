@@ -7,6 +7,7 @@ use App\Reservation;
 use App\Client;
 use App\Vehicule;
 use DB;
+use \PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use Carbon\Carbon;
@@ -310,5 +311,11 @@ class ReservationController extends Controller
         $reservation->delete();
 
         return redirect('/reservations')->with('success', 'Réservation supprimée!');
+    }
+
+    public function fun_pdf()
+    {
+        $pdf = \PDF::loadView('reservations.show');
+        return $pdf->download('show.pdf');
     }
 }

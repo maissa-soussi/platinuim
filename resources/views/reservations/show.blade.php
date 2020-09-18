@@ -79,9 +79,16 @@
                                 </tr> 
                         </table>
                       </div>
+                      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
                       <div class="card-footer text-muted" style="text-align:center">
                          
-                            <button style="cursor:pointer" type="submit" class="btn btn-primary">Imprimer</button>
+                      <a  class="printPage" href="#"> <span class="btn btn-primary">imprimer</span></a>
+                      <script>
+                      $('a.printPage').click(function(){
+           window.print();
+           return false;
+});
+                      </script>
                           
                       </div>
                     </div> 
