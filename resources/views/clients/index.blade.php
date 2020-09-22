@@ -41,7 +41,7 @@
       </div>
     @endif
 
-<table id="clienttable" class="table mt-3">
+<table id="clienttable" class="display compact">
  <thead class="thead-light">
    <tr>
      <th scope="col">Nom</th>

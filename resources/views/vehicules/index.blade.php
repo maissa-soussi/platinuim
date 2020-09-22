@@ -45,7 +45,7 @@
       </div>
     @endif
 
-<table id="vehiculetable" class="table mt-3">
+<table id="vehiculetable" class="display compact">
  <thead class="thead-light">
    <tr>
      <th scope="col">Véhicule</th>
