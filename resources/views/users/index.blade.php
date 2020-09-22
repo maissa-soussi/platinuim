@@ -23,6 +23,21 @@
 <br/> <br/>  
 <button type="button" class="btn btn-info" style="margin-left:80%;" href="#" data-toggle="modal" data-target="#myModal" >Ajouter Admin</button> 
 <br/> <br/> <br/>
+@if(session()->get('success'))
+   <div class="alert alert-success mt-3">
+     {{ session()->get('success') }}  
+   </div>
+@endif
+
+@if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div>
+    @endif
 <table class="table table-sm table-dark bg-navy" style="width:70%; margin-left:15%;">
   <thead>
     <tr style="height:35px;">

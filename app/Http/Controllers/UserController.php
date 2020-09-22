@@ -62,7 +62,7 @@ class UserController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'required',
+            'name' => 'required|unique:users',
             'email' => 'required|email',
             'password' => 'required',
             'role' => 'required'
@@ -155,7 +155,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:users',
             'email' => 'required|email',
             'password' => 'required',
             'role' => 'required'
