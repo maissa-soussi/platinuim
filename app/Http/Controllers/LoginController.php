@@ -19,9 +19,12 @@ class LoginController extends BaseController
         $user = DB::table('users')->where(['name'=>$login,'password'=>$mdp])->get();
 
         if (count($user) > 0)
-        {
-            session(['connected_user' => $login]);
+        {   foreach ($user as $users)
+            { $mail=$users->email;
+            $role=$users->role;
+            session(['connected_user' => $login,'mdp' => $mdp, 'mail' => $mail, 'role' => $role]);
             return redirect('/dashboard')->with('user',$user);
+        }
         }
         else 
         {
@@ -42,6 +45,9 @@ class LoginController extends BaseController
     public function logout(Request $req)
     {
         $req->session()->forget('connected_user');
+        $req->session()->forget('mdp');
+        $req->session()->forget('mail');
+        $req->session()->forget('role');
         return redirect('/');
     }
 }
