@@ -9,13 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users</h1>
+            <h1>Mon compte</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
-              <li class="breadcrumb-item active">show</li>
+              <li class="breadcrumb-item active">Mon compte</li>
             </ol>
           </div>
         </div>
@@ -28,24 +27,21 @@
 <div class="col-lg-6 mx-auto">
 
 
-    <form method="POST" action="{{ route('users.update', $user) }}">
+    <form method="POST">
      
         <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" disabled>
+                        <label>Name:</label>
+                        <input type="text" class="form-control" value="{{session('connected_user')}}" disabled>
                     </div>
             
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" disabled>
+                        <label>Email:</label>
+                        <input type="email" class="form-control" value="{{session('mail')}}" disabled>
                     </div>
             
                     <div class="form-group">
-                    <label for="password">Role:</label>
-                    <SELECT name="role" id="role" size="1" class="form-control" disabled>
-                        <OPTION value="Admin" @if($user->role == 'Admin') selected="selected" @endif>Admin
-                        <OPTION value="SuperAdmin" @if($user->role == 'SuperAdmin') selected="selected" @endif>SuperAdmin
-                    </SELECT>
+                    <label>Role:</label>
+                    <input type="text" class="form-control" value="{{session('role')}}" disabled>
                     </div><br><br>
     </form>
 </div>

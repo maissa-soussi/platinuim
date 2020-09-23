@@ -75,7 +75,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link"  href="#" role="button">
+        <a class="nav-link"  href="{{ route('compte') }}" role="button">
           <i class="fas fa-th-large"></i> Mon compte
         </a>
       </li>

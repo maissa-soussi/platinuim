@@ -81,9 +81,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function compte()
     {
-        $user = User::find($id);
+        
         $now = date('Y-m-d');
         $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
         $assurences = $assurences->get();
@@ -107,7 +107,7 @@ class UserController extends Controller
 
         );
 
-        return view('users.show', ['user' => $user, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
+        return view('users.compte', ['data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**
@@ -155,7 +155,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|unique:users',
+            'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
             'role' => 'required'

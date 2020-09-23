@@ -28,6 +28,7 @@ Route::group(['middleware' => [CheckConnected::class]], function () {
     Route::resource('clients', 'ClientController');
     Route::resource('reservations', 'ReservationController');
     Route::get("/planning", "ReservationController@planning")->name('planning') ;
+    Route::get("/compte", "UserController@compte")->name('compte') ;
     Route::get("/search", "ReservationController@search") ;
     Route::resource('users', 'UserController');
     // Logout route 
