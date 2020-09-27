@@ -92,6 +92,17 @@
 </div>
 </div>
 <a href="{{ route('clients.edit', $client) }}" class="btn btn-success" style="float:center; margin-left:570px;">modifier</a></form>
+<br><br><br>
+<div class="col-md-6 col-sm-6 col-12" style="float:center; margin-left:310px;">
+          <div class="alert alert-dark">Historique des résérvations</div>
+            <div class="info-box">
+            <ul>
+            @foreach($reserv as $reserv)
+            <li>Réf: {{ $reserv->id }} ( {{ $reserv->imma_v }} ): {{ $reserv->date_deb }} à {{ $reserv->date_fin }}.</li>
+            @endforeach
+            </ul>
+            </div>
+          </div>
     </section>
     <!-- /.content -->
   </div>

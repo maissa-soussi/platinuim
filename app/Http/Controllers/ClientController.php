@@ -106,6 +106,10 @@ class ClientController extends Controller
         $reparations = DB::table('vehicules')->where('repdate', 'like', '%'.$now.'%');
         $reparations = $reparations->get();
 
+        $reserv = DB::table('reservations')->where('cinclient', 'like', '%'.$client->cin.'%');
+        $reserv = $reserv->get();
+
+
         $nbassurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%')->count();
         $nbvidanges = DB::table('vehicules')->where('vidanges', 'like', '%'.$now.'%')->count();
         $nbvignettes = DB::table('vehicules')->where('vignettes', 'like', '%'.$now.'%')->count();
@@ -117,7 +121,7 @@ class ClientController extends Controller
 
         );
 
-        return view('clients.show', ['client' => $client, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
+        return view('clients.show', ['client' => $client, 'reserv' => $reserv, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     /**
