@@ -42,7 +42,7 @@
   <thead>
     <tr style="height:35px;">
       
-      <th scope="col">Nom & Prénom</th>
+      <th scope="col">Login</th>
       <th scope="col">Mail </th>
       <th scope="col">Poste</th>
       <th scope="col"></th>
