@@ -15,7 +15,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $categories = Categorie::all();
+        $categories = Categorie::all() ->sortBy('categorie');
         $now = date('Y-m-d');
         $assurences = DB::table('vehicules')->where('assurences', 'like', '%'.$now.'%');
         $assurences = $assurences->get();
