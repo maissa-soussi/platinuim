@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{!! asset('assets/css/sweetalert.css') !!}">
   
   <link href="{!! asset('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900') !!}" rel="stylesheet">
-  <link rel="stylesheet" href="{!! asset('assets/css/client.css') !!}">
+  
   <style>
   /*
  * Table styles

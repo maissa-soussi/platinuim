@@ -212,7 +212,6 @@ class ReservationController extends Controller
         );
 
         $reservation->save();
-        //Mail::to($clients->email)->send(new SendMail($data));
         return redirect('planning')->with('success', 'Ajout avec succes!');
     }
     }
