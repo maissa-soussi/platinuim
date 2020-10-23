@@ -163,6 +163,14 @@ class ReservationController extends Controller
             "paiement"=>"required|not_in:-1",
         ]);
 
+        $testclient = DB::table('clients')
+        ->where('cin', 'like', '%'.$request->get('cinclient').'%')
+        ->count();
+
+        $testvehicule = DB::table('vehicules')
+        ->where('matricule', 'like', '%'.$request->get('imma_v').'%')
+        ->count();
+
         $souslocation = DB::table('reservations')
          ->where('imma_v', 'like', '%'.$request->get('imma_v').'%')
          ->whereBetween('reservations.date_deb', [$request->get('date_deb'),$request->get('date_fin')])
@@ -171,6 +179,12 @@ class ReservationController extends Controller
          if($souslocation > 0){
             return redirect('planning')->with('success', 'vehicule non disponible!');
 
+         }
+         elseif($testclient == 0){
+            return redirect('planning')->with('success', 'CIN non valide!');
+         }
+         elseif($testvehicule == 0){
+            return redirect('planning')->with('success', 'matricule non valide!');
          }
          else{
 
