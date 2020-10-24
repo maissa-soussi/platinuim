@@ -86,6 +86,7 @@ class ReservationController extends Controller
 
     public function planning()
     {   
+        $vehicule = Vehicule::all();
         $reservations = Reservation::all();
         foreach($reservations as $reservation){
         $reservation->date_fin = Carbon::parse($reservation->date_fin)->addDays(1);
@@ -116,10 +117,11 @@ class ReservationController extends Controller
             'nbnotif' => $nbnotif,
 
         );
-        return view('reservations.planning',  ['reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
+        return view('reservations.planning',  ['vehicule' => $vehicule, 'reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
 
     public function search(Request $request){
+        $vehicule = Vehicule::all();
         $search = $request->get('search');
         $reservations = DB::table('reservations')->where('imma_v', 'like', '%'.$search.'%');
         $reservations = $reservations->get();
@@ -145,7 +147,7 @@ class ReservationController extends Controller
             'nbnotif' => $nbnotif,
 
         );
-        return view('reservations.planning', ['reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
+        return view('reservations.planning', ['vehicule' => $vehicule, 'reservations' => $reservations, 'data' => $data, 'assurences' => $assurences, 'vidanges' => $vidanges, 'vignettes' => $vignettes, 'visites' => $visites, 'reparations' => $reparations]);
     }
     /**
      * Store a newly created resource in storage.

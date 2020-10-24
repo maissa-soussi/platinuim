@@ -64,10 +64,16 @@
                    value="{{ old('cinclient') }}" class="form-control" id="cinclient">
         </div>
 
+        
+
         <div class="form-group">
-            <label for="imma_v">Matricule du véhicule</label>
-            <input type="text" name="imma_v" 
-                   value="{{ old('imma_v') }}" class="form-control" id="imma_v">
+        <label for="imma_v">Véhicule</label>
+                        <select class="form-control" name="imma_v" id="imma_v">
+                        <option value="-1">Select </option>
+                        @foreach ($vehicule as $key => $value)
+                        <option value="{{ $value->matricule }}">{{ $value->vehicule }} ({{ $value->matricule }})</option>
+                        @endforeach
+                        </select>
         </div>
 
         <div class="form-group">
